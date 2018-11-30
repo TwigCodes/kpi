@@ -1,0 +1,9 @@
+$nwcdkpi-black-primary: mat-palette($mat-grey, 700, 300, 900);
+$nwcdkpi-black-accent: mat-palette($mat-blue-grey, 400);
+$nwcdkpi-black-warn: mat-palette($mat-red, 500);
+
+$nwcdkpi-black-theme: mat-dark-theme(
+  $nwcdkpi-black-primary,
+  $nwcdkpi-black-accent,
+  $nwcdkpi-black-warn
+);
