@@ -17,6 +17,7 @@ export class FeaturesComponent implements OnInit {
   ngOnInit() {}
 
   openLink(link: string) {
-    window.open(link, '_blank');
+    let popup =
+      typeof window !== 'undefined' ? window.open(link, '_blank') : null;
   }
 }

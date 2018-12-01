@@ -19,7 +19,7 @@ enableProdMode();
 
 // Express server
 const app = express();
-
+// const domino = require('domino');
 const PORT = process.env.PORT || 4000;
 const CONTEXT = `/${process.env.CONTEXT || ''}`;
 const DIST_FOLDER = join(process.cwd(), 'dist');
@@ -28,6 +28,16 @@ const DIST_FOLDER = join(process.cwd(), 'dist');
 const template = readFileSync(
   join(DIST_FOLDER, 'browser', 'index.html')
 ).toString();
+
+// const win = domino.createWindow(template);
+
+// global['window'] = win;
+// global['document'] = win.document;
+// global['DOMTokenList'] = win.DOMTokenList;
+// global['Node'] = win.Node;
+// global['Text'] = win.Text;
+// global['HTMLElement'] = win.HTMLElement;
+// global['navigator'] = win.navigator;
 
 const {
   AppServerModuleNgFactory,

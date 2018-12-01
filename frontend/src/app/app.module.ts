@@ -3,8 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 
-import * as fundebug from 'fundebug-javascript';
-
 import { SharedModule } from '@app/shared';
 import { CoreModule } from '@app/core';
 import { environment } from '@env/environment';
@@ -14,6 +12,8 @@ import { StaticModule } from './static';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import * as fundebug from 'fundebug-javascript';
 
 fundebug.apikey = environment.fundbugApiKey;
 
