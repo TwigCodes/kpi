@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
 import { LocalStorageService } from './local-storage.service';
+import { PLATFORM_ID } from '@angular/core';
 
 describe('LocalStorageService', () => {
   let service: LocalStorageService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LocalStorageService]
+      providers: [LocalStorageService, PLATFORM_ID]
     });
     service = TestBed.get(LocalStorageService);
   });
@@ -33,28 +34,26 @@ describe('LocalStorageService', () => {
 
   it('should load initial state', () => {
     service.setItem('TEST.PROP', 'value');
-    expect(LocalStorageService.loadInitialState()).toEqual({
-      test: { prop: 'value' }
-    });
+    expect(service.loadInitialState()).toEqual({ test: { prop: 'value' } });
   });
 
   it('should load nested initial state', () => {
     service.setItem('TEST.PROP1.PROP2', 'value');
-    expect(LocalStorageService.loadInitialState()).toEqual({
+    expect(service.loadInitialState()).toEqual({
       test: { prop1: { prop2: 'value' } }
     });
   });
 
   it('should load initial state with camel case property', () => {
     service.setItem('TEST.SUB-PROP', 'value');
-    expect(LocalStorageService.loadInitialState()).toEqual({
+    expect(service.loadInitialState()).toEqual({
       test: { subProp: 'value' }
     });
   });
 
   it('should load nested initial state with camel case properties', () => {
     service.setItem('TEST.SUB-PROP.SUB-SUB-PROP', 'value');
-    expect(LocalStorageService.loadInitialState()).toEqual({
+    expect(service.loadInitialState()).toEqual({
       test: { subProp: { subSubProp: 'value' } }
     });
   });

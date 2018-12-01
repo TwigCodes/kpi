@@ -1,7 +1,14 @@
-import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
+import {
+  NgModule,
+  Optional,
+  SkipSelf,
+  ErrorHandler,
+  Injector,
+  PLATFORM_ID
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, META_REDUCERS } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -19,7 +26,7 @@ import { AuthEffects } from './auth/auth.effects';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AnimationsService } from './animations/animations.service';
 import { TitleService } from './title/title.service';
-import { reducers, metaReducers } from './core.state';
+import { reducers, getMetaReducers } from './core.state';
 import { AppErrorHandler } from './error-handler/app-error-handler.service';
 import { CustomSerializer } from './router/custom-serializer';
 import { NotificationService } from './notifications/notification.service';
@@ -31,7 +38,7 @@ import { NotificationService } from './notifications/notification.service';
     HttpClientModule,
 
     // ngrx
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducers),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([AuthEffects]),
     environment.production
@@ -52,7 +59,16 @@ import { NotificationService } from './notifications/notification.service';
   declarations: [],
   providers: [
     NotificationService,
-    LocalStorageService,
+    {
+      provide: LocalStorageService,
+      useClass: LocalStorageService,
+      deps: [Injector, PLATFORM_ID]
+    },
+    {
+      provide: META_REDUCERS,
+      deps: [LocalStorageService],
+      useFactory: getMetaReducers
+    },
     AuthGuardService,
     AnimationsService,
     httpInterceptorProviders,
