@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SettingsContainerComponent } from './settings';
+import { AuthGuardService } from './core';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsContainerComponent,
+    canActivate: [AuthGuardService],
     data: { title: 'nwcdkpi.menu.settings' }
   },
   {

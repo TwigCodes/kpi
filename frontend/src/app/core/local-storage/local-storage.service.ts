@@ -8,9 +8,6 @@ export class LocalStorageService {
   constructor(@Inject(PLATFORM_ID) private platformId) {}
 
   loadInitialState() {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
     return Object.keys(localStorage).reduce((state: any, storageKey) => {
       if (storageKey.includes(APP_PREFIX)) {
         const stateKeys = storageKey
@@ -42,31 +39,19 @@ export class LocalStorageService {
   }
 
   setItem(key: string, value: any) {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
     localStorage.setItem(`${APP_PREFIX}${key}`, JSON.stringify(value));
   }
 
   getItem(key: string) {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
     return JSON.parse(localStorage.getItem(`${APP_PREFIX}${key}`));
   }
 
   removeItem(key: string) {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
     localStorage.removeItem(`${APP_PREFIX}${key}`);
   }
 
   /** Tests that localStorage exists, can be written to, and read from. */
   testLocalStorage() {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
     const testValue = 'testValue';
     const testKey = 'testKey';
     let retrievedValue: string;

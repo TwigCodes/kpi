@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'features',
     component: FeaturesComponent,
-    data: { title: 'nwcdkpi.menu.features' }
+    data: { title: 'nwcdkpi.menu.feedback' }
   }
 ];
 

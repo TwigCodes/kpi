@@ -10,7 +10,8 @@
       "prefix": "nwcdkpi",
       "schematics": {
         "@schematics/angular:component": {
-          "changeDetection": "OnPush"
+          "changeDetection": "OnPush",
+          "styleext": "scss"
         }
       },
       "architect": {
@@ -35,8 +36,12 @@
               }
             ],
             "styles": [
-              { "input": "src/styles-app-loading.scss" },
-              { "input": "src/styles.scss" }
+              {
+                "input": "src/styles-app-loading.scss"
+              },
+              {
+                "input": "src/styles.scss"
+              }
             ],
             "scripts": []
           },
@@ -148,8 +153,12 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
+            "tsConfig": [
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "server": {
@@ -177,11 +186,16 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
     }
   },
-  "defaultProject": "nwcdkpi"
+  "defaultProject": "nwcdkpi",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
