@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -21,7 +22,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatSliderModule } from '@angular/material/';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 
@@ -93,11 +95,13 @@ library.add(
 
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
 
     TranslateModule,
 
@@ -107,6 +111,7 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     MatTabsModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatChipsModule,
     MatCardModule,
     MatSidenavModule,
@@ -118,10 +123,15 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     MatSnackBarModule,
     MatSlideToggleModule,
     MatDividerModule,
+    MatAutocompleteModule,
 
     FontAwesomeModule
   ],
-  declarations: [BigInputComponent, BigInputActionComponent],
+  declarations: [
+    BigInputComponent,
+    BigInputActionComponent,
+    AutocompleteComponent
+  ],
   exports: [
     CommonModule,
     FormsModule,
@@ -135,6 +145,7 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     MatChipsModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatCheckboxModule,
     MatCardModule,
     MatSidenavModule,
@@ -149,11 +160,13 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatAutocompleteModule,
 
     FontAwesomeModule,
 
     BigInputComponent,
     BigInputActionComponent
+    // AutocompleteComponent
   ]
 })
 export class SharedModule {}

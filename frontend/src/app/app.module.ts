@@ -28,7 +28,7 @@ export class FundebugErrorHandler implements ErrorHandler {
   imports: [
     // angular
     BrowserAnimationsModule,
-    BrowserModule,
+    // BrowserModule,
 
     // universal
     BrowserModule.withServerTransition({ appId: 'nwcdkpi' }),
