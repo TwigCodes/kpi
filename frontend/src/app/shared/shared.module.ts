@@ -165,8 +165,8 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     FontAwesomeModule,
 
     BigInputComponent,
-    BigInputActionComponent
-    // AutocompleteComponent
+    BigInputActionComponent,
+    AutocompleteComponent
   ]
 })
 export class SharedModule {}

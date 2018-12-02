@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   ];
   navigation = [
     { link: 'about', label: 'nwcdkpi.menu.about' },
-    { link: 'features', label: 'nwcdkpi.menu.feedback' },
+    { link: 'feedback', label: 'nwcdkpi.menu.feedback' },
     { link: 'examples', label: 'nwcdkpi.menu.admin' }
   ];
   navigationSideMenu = [

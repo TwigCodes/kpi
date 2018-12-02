@@ -9,6 +9,7 @@ import { environment } from '@env/environment';
 
 import { SettingsModule } from './settings';
 import { StaticModule } from './static';
+import { FeedbackModule } from './feedback/feedback.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ export class FundebugErrorHandler implements ErrorHandler {
     // features
     StaticModule,
     SettingsModule,
+    FeedbackModule,
 
     // app
     AppRoutingModule

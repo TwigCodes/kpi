@@ -1,0 +1,82 @@
+{
+  "employee": [
+    {
+      "id": "0",
+      "email": "zhangsan@nwcd.com",
+      "name": "Zhang San",
+      "title": "Project Manager",
+      "gender": true,
+      "avatar": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "employeeNo": "A00001",
+      "reportTo": "wangwu@nwcd.com"
+    },
+    {
+      "id": "1",
+      "email": "lisi@nwcd.com",
+      "name": "Li Si",
+      "title": "Engineer",
+      "gender": true,
+      "avatar": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "employeeNo": "A00002",
+      "reportTo": "zhangsan@nwcd.com"
+    },
+    {
+      "id": "2",
+      "email": "wangwu@nwcd.com",
+      "name": "Wang Wu",
+      "title": "Project Director",
+      "gender": false,
+      "avatar": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "employeeNo": "A00003"
+    },
+    {
+      "id": "3",
+      "email": "zhaoliu@nwcd.com",
+      "name": "Zhao Liu",
+      "title": "Project Manager",
+      "gender": true,
+      "avatar": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "employeeNo": "A00004"
+    },
+    {
+      "id": "4",
+      "email": "david@nwcd.com",
+      "name": "David Tian",
+      "title": "Engineer",
+      "gender": true,
+      "avatar": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "employeeNo": "A00005",
+      "reportTo": "zhaoliu@nwcd.com"
+    },
+    {
+      "id": "5",
+      "email": "michael@nwcd.com",
+      "name": "Michael Sang",
+      "title": "Sales",
+      "gender": true,
+      "avatar": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "employeeNo": "A00006",
+      "reportTo": "wangwu@nwcd.com"
+    },
+    {
+      "id": "6",
+      "email": "liming@nwcd.com",
+      "name": "Li Ming",
+      "title": "UI Designer",
+      "gender": true,
+      "avatar": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "employeeNo": "A00007",
+      "reportTo": "zhangsan@nwcd.com"
+    },
+    {
+      "id": "7",
+      "email": "wayne@nwcd.com",
+      "name": "Wayne Kang",
+      "title": "Deigner",
+      "gender": true,
+      "avatar": "https://material.angular.io/assets/img/examples/shiba1.jpg",
+      "employeeNo": "A00001",
+      "reportTo": "zhaoliu@nwcd.com"
+    }
+  ]
+}
