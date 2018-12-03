@@ -5,9 +5,9 @@ import { ReviewDashboardComponent } from './components/review-dashboard/review-d
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'raters',
     component: RatersContainerComponent,
-    data: { title: 'nwcdkpi.menu.feedback' }
+    data: { title: 'nwcdkpi.menu.feedback.raters' }
   },
   {
     path: 'reviewdashboard',

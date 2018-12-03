@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from '@app/feedback/feedback.model';
-import { NotificationService } from '@app/core';
+import { NotificationService, ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 import { TranslateService } from '@ngx-translate/core';
 import { take, filter } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
@@ -13,9 +13,10 @@ import { RaterDialogComponent } from '../rater-dialog/rater-dialog.component';
   styleUrls: ['./raters-container.component.scss']
 })
 export class RatersContainerComponent implements OnInit {
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   items: Array<Partial<Employee>> = [
     {
-      id: '0',
+      id: 0,
       email: 'zhangsan@nwcd.com',
       name: 'Zhang San',
       title: 'Project Manager',
@@ -26,7 +27,7 @@ export class RatersContainerComponent implements OnInit {
       reportTo: 'wangwu@nwcd.com'
     },
     {
-      id: '1',
+      id: 1,
       email: 'lisi@nwcd.com',
       name: 'Li Si',
       title: 'Engineer',
@@ -37,7 +38,7 @@ export class RatersContainerComponent implements OnInit {
       reportTo: 'zhangsan@nwcd.com'
     },
     {
-      id: '2',
+      id: 2,
       email: 'wangwu@nwcd.com',
       name: 'Wang Wu',
       title: 'Project Director',
@@ -47,7 +48,7 @@ export class RatersContainerComponent implements OnInit {
       employeeNo: 'A00003'
     },
     {
-      id: '3',
+      id: 3,
       email: 'zhaoliu@nwcd.com',
       name: 'Zhao Liu',
       title: 'Project Manager',
@@ -57,7 +58,7 @@ export class RatersContainerComponent implements OnInit {
       employeeNo: 'A00004'
     },
     {
-      id: '4',
+      id: 4,
       email: 'david@nwcd.com',
       name: 'David Tian',
       title: 'Engineer',
@@ -68,7 +69,7 @@ export class RatersContainerComponent implements OnInit {
       reportTo: 'zhaoliu@nwcd.com'
     },
     {
-      id: '5',
+      id: 5,
       email: 'michael@nwcd.com',
       name: 'Michael Sang',
       title: 'Sales',
@@ -79,7 +80,7 @@ export class RatersContainerComponent implements OnInit {
       reportTo: 'wangwu@nwcd.com'
     },
     {
-      id: '6',
+      id: 6,
       email: 'liming@nwcd.com',
       name: 'Li Ming',
       title: 'UI Designer',
@@ -90,7 +91,7 @@ export class RatersContainerComponent implements OnInit {
       reportTo: 'zhangsan@nwcd.com'
     },
     {
-      id: '7',
+      id: 7,
       email: 'wayne@nwcd.com',
       name: 'Wayne Kang',
       title: 'Deigner',
