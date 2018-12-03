@@ -9,14 +9,16 @@ import { FeedbackEffects } from './feedback.effects';
 
 import { RatersContainerComponent } from './components/raters-container/raters-container.component';
 import { SharedModule } from '@app/shared';
+import { RaterDialogComponent } from './components/rater-dialog/rater-dialog.component';
 
 @NgModule({
-  declarations: [RatersContainerComponent],
+  declarations: [RatersContainerComponent, RaterDialogComponent],
   imports: [
     SharedModule,
     FeedbackRoutingModule,
     StoreModule.forFeature('feedback', fromFeedback.reducer),
     EffectsModule.forFeature([FeedbackEffects])
-  ]
+  ],
+  entryComponents: [RaterDialogComponent]
 })
 export class FeedbackModule {}

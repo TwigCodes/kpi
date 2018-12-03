@@ -53,7 +53,7 @@ export class AutocompleteComponent
    *
    *    [showAddNew] = "false"                       // shows create button when no suggestions
    *    [addNewText] = "'Add new'"                   // text to display near create button
-   *    (createNew) = "onCreateNew($event)"      // rises an event when click on create button
+   *    (createNew) = "onCreateNew($event)"          // rises an event when click on create button
    *
    *    [transformResult] = "function"               // callback function to format data from server response
    *    [isFocused]="true"                           // sets focus that triggers fetch
@@ -94,10 +94,14 @@ export class AutocompleteComponent
   @Input() displayItemFn?: (item: any) => string;
   @Input() displayTemplate?: TemplateRef<any>;
   @Input() transformResult: any = (x: any[]) => x;
+  @Input() noRecordText = 'Sorry, no suggestions were found';
+  @Input() showNoRecordButton = false;
+  @Input() noRecordButtonText = 'Do something';
 
   @Output() modelChange: EventEmitter<any> = new EventEmitter<any>();
   @Output() optionSelected = new EventEmitter();
   @Output() createNew = new EventEmitter();
+  @Output() noRecord = new EventEmitter();
 
   @ViewChild('autocompleteInput') autocompleteInput: ElementRef;
   @ViewChild('autocomplete') autocomplete: MatAutocomplete;
@@ -329,6 +333,13 @@ export class AutocompleteComponent
     }
 
     this.createNew.emit(this.selectedOption);
+  }
+
+  /**
+   * onNoRecord
+   */
+  public onNoRecord(query: string) {
+    this.noRecord.emit(query);
   }
 
   private isQueryEmpty(query: string): boolean {

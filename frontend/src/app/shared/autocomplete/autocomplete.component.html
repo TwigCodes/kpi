@@ -39,7 +39,12 @@
       </span>
     </mat-option>
     <mat-option *ngIf="query && noSuggestions" disabled>
-      <span>Sorry, no suggestions were found</span>
+      <span>{{ noRecordText }}</span>
+    </mat-option>
+    <mat-option *ngIf="query && noSuggestions && showNoRecordButton" disabled>
+      <button (click)="onNoRecord(query)" mat-button>
+        <mat-icon class="add-icon">add</mat-icon> <span class="create-new"> {{noRecordButtonText}} </span>
+      </button>
     </mat-option>
     <mat-option *ngIf="query && noSuggestions && showAddNew" [value]="query" (click)="onCreateNew()">
       <mat-icon class="add-icon">add</mat-icon> <span class="create-new"> {{addNewText}} </span>

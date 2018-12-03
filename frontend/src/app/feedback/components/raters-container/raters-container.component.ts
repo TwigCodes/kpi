@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '@app/feedback/feedback.model';
 import { NotificationService } from '@app/core';
 import { TranslateService } from '@ngx-translate/core';
-import { take } from 'rxjs/operators';
+import { take, filter } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { RaterDialogComponent } from '../rater-dialog/rater-dialog.component';
 
 @Component({
   selector: 'nwcdkpi-raters-container',
@@ -10,14 +12,15 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./raters-container.component.scss']
 })
 export class RatersContainerComponent implements OnInit {
-  items: Array<Employee> = [
+  items: Array<Partial<Employee>> = [
     {
       id: '0',
       email: 'zhangsan@nwcd.com',
       name: 'Zhang San',
       title: 'Project Manager',
       gender: true,
-      avatar: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+      avatar:
+        'https://tinyfac.es/data/avatars/A7299C8E-CEFC-47D9-939A-3C8CA0EA4D13-200w.jpeg',
       employeeNo: 'A00001',
       reportTo: 'wangwu@nwcd.com'
     },
@@ -27,7 +30,8 @@ export class RatersContainerComponent implements OnInit {
       name: 'Li Si',
       title: 'Engineer',
       gender: true,
-      avatar: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+      avatar:
+        'https://tinyfac.es/data/avatars/E0B4CAB3-F491-4322-BEF2-208B46748D4A-200w.jpeg',
       employeeNo: 'A00002',
       reportTo: 'zhangsan@nwcd.com'
     },
@@ -37,7 +41,8 @@ export class RatersContainerComponent implements OnInit {
       name: 'Wang Wu',
       title: 'Project Director',
       gender: false,
-      avatar: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+      avatar:
+        'https://tinyfac.es/data/avatars/B3CF5288-34B0-4A5E-9877-5965522529D6-200w.jpeg',
       employeeNo: 'A00003'
     },
     {
@@ -46,7 +51,8 @@ export class RatersContainerComponent implements OnInit {
       name: 'Zhao Liu',
       title: 'Project Manager',
       gender: true,
-      avatar: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+      avatar:
+        'https://tinyfac.es/data/avatars/1C4EEDC2-FE9C-40B3-A2C9-A038873EE692-200w.jpeg',
       employeeNo: 'A00004'
     },
     {
@@ -55,7 +61,8 @@ export class RatersContainerComponent implements OnInit {
       name: 'David Tian',
       title: 'Engineer',
       gender: true,
-      avatar: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+      avatar:
+        'https://tinyfac.es/data/avatars/FBEBF655-4886-455A-A4A4-D62B77DD419B-200w.jpeg',
       employeeNo: 'A00005',
       reportTo: 'zhaoliu@nwcd.com'
     },
@@ -65,7 +72,8 @@ export class RatersContainerComponent implements OnInit {
       name: 'Michael Sang',
       title: 'Sales',
       gender: true,
-      avatar: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+      avatar:
+        'https://tinyfac.es/data/avatars/852EC6E1-347C-4187-9D42-DF264CCF17BF-200w.jpeg',
       employeeNo: 'A00006',
       reportTo: 'wangwu@nwcd.com'
     },
@@ -75,7 +83,8 @@ export class RatersContainerComponent implements OnInit {
       name: 'Li Ming',
       title: 'UI Designer',
       gender: true,
-      avatar: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+      avatar:
+        'https://tinyfac.es/data/avatars/344CFC24-61FB-426C-B3D1-CAD5BCBD3209-200w.jpeg',
       employeeNo: 'A00007',
       reportTo: 'zhangsan@nwcd.com'
     },
@@ -85,23 +94,25 @@ export class RatersContainerComponent implements OnInit {
       name: 'Wayne Kang',
       title: 'Deigner',
       gender: true,
-      avatar: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
+      avatar:
+        'https://tinyfac.es/data/avatars/AEF44435-B547-4B84-A2AE-887DFAEE6DDF-200w.jpeg',
       employeeNo: 'A00001',
       reportTo: 'zhaoliu@nwcd.com'
     }
   ];
   currentEmployeeIndex = 0;
-  selectedRaters: Employee[] = [];
+  selectedRaters: Partial<Employee>[] = [];
   constructor(
     private readonly notificationService: NotificationService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.selectedRaters = [...this.supervisor, ...this.subordinates];
   }
 
-  selectRater(rater: Employee) {
+  selectRater(rater: Partial<Employee>) {
     if (
       this.selectedRaters.findIndex(item => item.email === rater.email) > -1
     ) {
@@ -116,19 +127,19 @@ export class RatersContainerComponent implements OnInit {
     }
   }
 
-  public get supervisor(): Employee[] {
+  public get supervisor(): Partial<Employee>[] {
     return this.items.filter(
       item => item.email === this.items[this.currentEmployeeIndex].reportTo
     );
   }
 
-  public get subordinates(): Employee[] {
+  public get subordinates(): Partial<Employee>[] {
     return this.items.filter(
       item => item.reportTo === this.items[this.currentEmployeeIndex].email
     );
   }
 
-  public relationToUser(rater: Employee): string {
+  public relationToUser(rater: Partial<Employee>): string {
     const relation =
       rater.email === this.items[this.currentEmployeeIndex].reportTo
         ? 'nwcdkpi.feedback.raters.supervisor'
@@ -138,10 +149,25 @@ export class RatersContainerComponent implements OnInit {
     return relation;
   }
 
-  public isSupervisorOrSubordinates(rater: Employee) {
+  public isSupervisorOrSubordinates(rater: Partial<Employee>) {
     return (
       rater.email === this.items[this.currentEmployeeIndex].reportTo ||
       rater.reportTo === this.items[this.currentEmployeeIndex].email
     );
+  }
+
+  completeRaterSelection() {}
+
+  public addExternalRater(email) {
+    this.dialog
+      .open(RaterDialogComponent, { data: { rater: { email: email } } })
+      .afterClosed()
+      .pipe(
+        filter(val => val),
+        take(1)
+      )
+      .subscribe((rater: Partial<Employee>) => {
+        this.selectedRaters = [...this.selectedRaters, rater];
+      });
   }
 }

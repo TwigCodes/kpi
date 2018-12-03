@@ -25,7 +25,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule, MatFormFieldModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -124,6 +126,9 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     MatSlideToggleModule,
     MatDividerModule,
     MatAutocompleteModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FlexLayoutModule,
 
     FontAwesomeModule
   ],
@@ -161,6 +166,9 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FlexLayoutModule,
 
     FontAwesomeModule,
 

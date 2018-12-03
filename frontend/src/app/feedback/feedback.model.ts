@@ -1,10 +1,10 @@
 import { AppState } from '@app/core';
 
 export interface Employee {
-  id: string;
+  id?: string;
   name: string;
   email: string;
-  employeeNo: string;
+  employeeNo?: string;
   gender: boolean;
   avatar: string;
   title: string;

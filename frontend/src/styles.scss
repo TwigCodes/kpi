@@ -56,3 +56,26 @@
   @include angular-material-theme($nwcdkpi-nature-theme);
   @include custom-components-theme($nwcdkpi-nature-theme);
 }
+
+.full-width {
+  width: 100%;
+}
+
+.fill-remaining-space {
+  // 使用 flexbox 填充剩余空间
+  // @angular/material 中的很多控件使用了 flex 布局
+  flex: 1 1 auto;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  padding: 0px;
+  margin: 5px;
+}
+
+::ng-deep .mat-line {
+  word-wrap: break-word !important;
+  white-space: pre-wrap !important;
+}
