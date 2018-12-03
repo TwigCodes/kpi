@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Employee } from '@app/feedback/feedback.model';
 import { NotificationService } from '@app/core';
 import { TranslateService } from '@ngx-translate/core';
@@ -105,7 +106,8 @@ export class RatersContainerComponent implements OnInit {
   constructor(
     private readonly notificationService: NotificationService,
     private translateService: TranslateService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -156,7 +158,9 @@ export class RatersContainerComponent implements OnInit {
     );
   }
 
-  completeRaterSelection() {}
+  completeRaterSelection() {
+    this.router.navigate(['/feedback/reviewdashboard']);
+  }
 
   public addExternalRater(email) {
     this.dialog

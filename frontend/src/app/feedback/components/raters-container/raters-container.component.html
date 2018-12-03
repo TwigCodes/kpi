@@ -34,9 +34,12 @@
         <div class="ribbon-green"> {{ relationToUser(rater) | translate }} </div>
       </div>
       <mat-card-header>
-        <div mat-card-avatar [ngStyle]="{'background-image': 'url(' + rater.avatar + ')', 'background-size': 'cover'}"></div>
+        <div mat-card-avatar *ngIf="rater.avatar.startsWith('http') else loadBuildInAvatar" [ngStyle]="{'background-image': 'url(' + rater.avatar + ')', 'background-size': 'cover'}"></div>
+        <ng-template #loadBuildInAvatar>
+          <mat-icon [svgIcon]="rater.avatar" mat-card-avatar></mat-icon>
+        </ng-template>
         <mat-card-title>{{ rater.name }}</mat-card-title>
-        <mat-card-subtitle>{{ rater.title }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ rater.title ? rater.title : ('nwcdkpi.feedback.rater.notitle' | translate) }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <p class="d-flex mx-auto align-items-center justify-content-start">

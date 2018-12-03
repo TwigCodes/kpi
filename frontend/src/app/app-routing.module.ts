@@ -17,6 +17,11 @@ const routes: Routes = [
     data: { title: 'nwcdkpi.menu.settings' }
   },
   {
+    path: 'feedback',
+    loadChildren: 'app/feedback#FeedbackModule',
+    pathMatch: 'prefix'
+  },
+  {
     path: 'examples',
     loadChildren: 'app/examples/examples.module#ExamplesModule'
   },

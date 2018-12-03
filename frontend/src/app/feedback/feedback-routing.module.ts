@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RatersContainerComponent } from './components/raters-container/raters-container.component';
+import { ReviewDashboardComponent } from './components/review-dashboard/review-dashboard.component';
 
 const routes: Routes = [
   {
-    path: 'feedback',
+    path: '',
     component: RatersContainerComponent,
     data: { title: 'nwcdkpi.menu.feedback' }
+  },
+  {
+    path: 'reviewdashboard',
+    component: ReviewDashboardComponent,
+    data: { title: 'nwcdkpi.feedback.dashboard' }
   }
 ];
 

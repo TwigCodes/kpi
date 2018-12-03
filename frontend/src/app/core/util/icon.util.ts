@@ -16,24 +16,12 @@ export const loadIconResources = (ir: MatIconRegistry, ds: DomSanitizer) => {
     ds.bypassSecurityTrustResourceUrl(`${avatarDir}/avatars.svg`)
   )
     .addSvgIcon(
-      'unassigned',
-      ds.bypassSecurityTrustResourceUrl(`${avatarDir}/unassigned.svg`)
+      'male',
+      ds.bypassSecurityTrustResourceUrl(`${avatarDir}/male.svg`)
     )
     .addSvgIcon(
-      'move',
-      ds.bypassSecurityTrustResourceUrl(`${iconDir}/move.svg`)
-    )
-    .addSvgIcon(
-      'room',
-      ds.bypassSecurityTrustResourceUrl(`${iconDir}/room.svg`)
-    )
-    .addSvgIcon(
-      'floor',
-      ds.bypassSecurityTrustResourceUrl(`${iconDir}/floor.svg`)
-    )
-    .addSvgIcon(
-      'json',
-      ds.bypassSecurityTrustResourceUrl(`${iconDir}/json.svg`)
+      'female',
+      ds.bypassSecurityTrustResourceUrl(`${avatarDir}/female.svg`)
     )
     .registerFontClassAlias('fontawesome', 'fa');
 };

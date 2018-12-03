@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import { StoreModule, META_REDUCERS } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -30,6 +32,7 @@ import { reducers, getMetaReducers } from './core.state';
 import { AppErrorHandler } from './error-handler/app-error-handler.service';
 import { CustomSerializer } from './router/custom-serializer';
 import { NotificationService } from './notifications/notification.service';
+import { loadIconResources } from './util/icon.util';
 
 @NgModule({
   imports: [
@@ -82,11 +85,14 @@ export class CoreModule {
   constructor(
     @Optional()
     @SkipSelf()
-    parentModule: CoreModule
+    parentModule: CoreModule,
+    ir: MatIconRegistry,
+    ds: DomSanitizer
   ) {
     if (parentModule) {
       throw new Error('CoreModule is already loaded. Import only in AppModule');
     }
+    loadIconResources(ir, ds);
   }
 }
 
