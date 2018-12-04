@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class EmailService {
 
   private final JavaMailSender mailSender;
+  private String mailFrom = "wangpeng@twigcodes.com";
 
   public EmailService(JavaMailSender mailSender) {
     this.mailSender = mailSender;
@@ -24,6 +25,7 @@ public class EmailService {
     message.setTo(to);
     message.setSubject(subject);
     message.setText(text);
+    message.setFrom(mailFrom);
     mailSender.send(message);
   }
 
@@ -47,7 +49,7 @@ public class EmailService {
       helper.setTo(to);
       helper.setSubject(subject);
       helper.setText(text);
-
+      helper.setFrom(mailFrom);
       FileSystemResource file = new FileSystemResource(new File(pathToAttachment));
       helper.addAttachment("attachment", file);
 
