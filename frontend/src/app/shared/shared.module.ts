@@ -26,8 +26,13 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { MatNativeDateModule, MatFormFieldModule } from '@angular/material';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -98,6 +103,9 @@ library.add(
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { DetailRowDirective } from './detail-row.directive';
+import { DynaTableComponent } from './dyna-table/dyna-table.component';
+import { FilterMenuComponent } from './filter-menu/filter-menu.component';
 
 @NgModule({
   imports: [
@@ -105,8 +113,11 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     FormsModule,
     ReactiveFormsModule,
 
+    RouterModule,
+
     TranslateModule,
 
+    ScrollingModule,
     MatButtonModule,
     MatToolbarModule,
     MatSelectModule,
@@ -128,6 +139,9 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     MatAutocompleteModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     FlexLayoutModule,
 
     FontAwesomeModule
@@ -135,7 +149,10 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
   declarations: [
     BigInputComponent,
     BigInputActionComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    DetailRowDirective,
+    DynaTableComponent,
+    FilterMenuComponent
   ],
   exports: [
     CommonModule,
@@ -144,6 +161,7 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 
     TranslateModule,
 
+    ScrollingModule,
     MatButtonModule,
     MatMenuModule,
     MatTabsModule,
@@ -168,13 +186,18 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
     MatAutocompleteModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     FlexLayoutModule,
 
     FontAwesomeModule,
 
     BigInputComponent,
     BigInputActionComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    DetailRowDirective,
+    DynaTableComponent
   ]
 })
 export class SharedModule {}

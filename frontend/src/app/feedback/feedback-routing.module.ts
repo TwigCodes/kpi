@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RatersContainerComponent } from './components/raters-container/raters-container.component';
-import { ReviewDashboardComponent } from './components/review-dashboard/review-dashboard.component';
+import { ReviewContainerComponent } from './components/review-container/review-container.component';
 
 const routes: Routes = [
   {
@@ -10,9 +10,9 @@ const routes: Routes = [
     data: { title: 'nwcdkpi.menu.feedback.raters' }
   },
   {
-    path: 'reviewdashboard',
-    component: ReviewDashboardComponent,
-    data: { title: 'nwcdkpi.feedback.dashboard' }
+    path: 'review',
+    component: ReviewContainerComponent,
+    data: { title: 'nwcdkpi.menu.feedback.review' }
   }
 ];
 

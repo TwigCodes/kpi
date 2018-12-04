@@ -10,10 +10,16 @@ import { FeedbackEffects } from './feedback.effects';
 import { RatersContainerComponent } from './components/raters-container/raters-container.component';
 import { SharedModule } from '@app/shared';
 import { RaterDialogComponent } from './components/rater-dialog/rater-dialog.component';
-import { ReviewDashboardComponent } from './components/review-dashboard/review-dashboard.component';
+import { ReviewContainerComponent } from './components/review-container/review-container.component';
+import { ReviewItemComponent } from './components/review-item/review-item.component';
 
 @NgModule({
-  declarations: [RatersContainerComponent, RaterDialogComponent, ReviewDashboardComponent],
+  declarations: [
+    RatersContainerComponent,
+    RaterDialogComponent,
+    ReviewContainerComponent,
+    ReviewItemComponent
+  ],
   imports: [
     SharedModule,
     FeedbackRoutingModule,

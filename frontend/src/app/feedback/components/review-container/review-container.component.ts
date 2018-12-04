@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Employee } from '@app/feedback/feedback.model';
-import { NotificationService, ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
-import { TranslateService } from '@ngx-translate/core';
-import { take, filter } from 'rxjs/operators';
-import { MatDialog } from '@angular/material';
-import { RaterDialogComponent } from '../rater-dialog/rater-dialog.component';
-import { getRelation } from '@app/feedback/feedback.util';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 
 @Component({
-  selector: 'nwcdkpi-raters-container',
-  templateUrl: './raters-container.component.html',
-  styleUrls: ['./raters-container.component.scss']
+  selector: 'nwcdkpi-review-container',
+  templateUrl: './review-container.component.html',
+  styleUrls: ['./review-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RatersContainerComponent implements OnInit {
+export class ReviewContainerComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+  currentEmployeeIndex = 0;
+
   items: Array<Partial<Employee>> = [
     {
       id: 0,
@@ -46,8 +43,7 @@ export class RatersContainerComponent implements OnInit {
       gender: false,
       avatar:
         'https://tinyfac.es/data/avatars/B3CF5288-34B0-4A5E-9877-5965522529D6-200w.jpeg',
-      employeeNo: 'A00003',
-      reportTo: 'zhaoliu@nwcd.com'
+      employeeNo: 'A00003'
     },
     {
       id: 3,
@@ -57,8 +53,7 @@ export class RatersContainerComponent implements OnInit {
       gender: true,
       avatar:
         'https://tinyfac.es/data/avatars/1C4EEDC2-FE9C-40B3-A2C9-A038873EE692-200w.jpeg',
-      employeeNo: 'A00004',
-      reportTo: 'zhaoliu@nwcd.com'
+      employeeNo: 'A00004'
     },
     {
       id: 4,
@@ -105,45 +100,69 @@ export class RatersContainerComponent implements OnInit {
       reportTo: 'zhaoliu@nwcd.com'
     }
   ];
-  currentEmployeeIndex = 0;
-  selectedRaters: Partial<Employee>[] = [];
-  constructor(
-    private readonly notificationService: NotificationService,
-    private translateService: TranslateService,
-    private dialog: MatDialog,
-    private router: Router
-  ) {}
-
-  ngOnInit() {
-    this.selectedRaters = [...this.supervisor, ...this.subordinates];
-  }
-
-  selectRater(rater: Partial<Employee>) {
-    if (
-      this.selectedRaters.findIndex(item => item.email === rater.email) > -1
-    ) {
-      this.translateService
-        .get('nwcdkpi.feedback.raters.notification.existed')
-        .pipe(take(1))
-        .subscribe(title => {
-          this.notificationService.error(title);
-        });
-    } else {
-      this.selectedRaters = [...this.selectedRaters, rater];
+  feedbackToOthers = [
+    {
+      targetUser: {
+        id: 0,
+        email: 'zhangsan@nwcd.com',
+        name: 'Zhang San',
+        title: 'Project Manager',
+        gender: true,
+        avatar:
+          'https://tinyfac.es/data/avatars/A7299C8E-CEFC-47D9-939A-3C8CA0EA4D13-200w.jpeg',
+        employeeNo: 'A00001',
+        reportTo: 'wangwu@nwcd.com'
+      },
+      questionnaireId: 1
+    },
+    {
+      targetUser: {
+        id: 1,
+        email: 'lisi@nwcd.com',
+        name: 'Li Si',
+        title: 'Engineer',
+        gender: true,
+        avatar:
+          'https://tinyfac.es/data/avatars/E0B4CAB3-F491-4322-BEF2-208B46748D4A-200w.jpeg',
+        employeeNo: 'A00002',
+        reportTo: 'zhangsan@nwcd.com'
+      },
+      questionnaireId: 1
     }
-  }
+  ];
+  completedFeedbacks = [
+    {
+      targetUser: {
+        id: 2,
+        email: 'wangwu@nwcd.com',
+        name: 'Wang Wu',
+        title: 'Project Director',
+        gender: false,
+        avatar:
+          'https://tinyfac.es/data/avatars/B3CF5288-34B0-4A5E-9877-5965522529D6-200w.jpeg',
+        employeeNo: 'A00003',
+        reportTo: 'zhaoliu@nwcd.com'
+      },
+      questionnaireId: 1
+    },
+    {
+      targetUser: {
+        id: 3,
+        email: 'zhaoliu@nwcd.com',
+        name: 'Zhao Liu',
+        title: 'Project Manager',
+        gender: true,
+        avatar:
+          'https://tinyfac.es/data/avatars/1C4EEDC2-FE9C-40B3-A2C9-A038873EE692-200w.jpeg',
+        employeeNo: 'A00004',
+        reportTo: 'zhaoliu@nwcd.com'
+      },
+      questionnaireId: 1
+    }
+  ];
+  constructor() {}
 
-  public get supervisor(): Partial<Employee>[] {
-    return this.items.filter(
-      item => item.email === this.items[this.currentEmployeeIndex].reportTo
-    );
-  }
-
-  public get subordinates(): Partial<Employee>[] {
-    return this.items.filter(
-      item => item.reportTo === this.items[this.currentEmployeeIndex].email
-    );
-  }
+  ngOnInit() {}
 
   public relationToUser(rater: Partial<Employee>): string {
     const relation =
@@ -153,29 +172,5 @@ export class RatersContainerComponent implements OnInit {
         ? 'nwcdkpi.feedback.raters.subordinate'
         : 'nwcdkpi.feedback.raters.colleague';
     return relation;
-  }
-
-  public isSupervisorOrSubordinates(rater: Partial<Employee>) {
-    return (
-      rater.email === this.items[this.currentEmployeeIndex].reportTo ||
-      rater.reportTo === this.items[this.currentEmployeeIndex].email
-    );
-  }
-
-  completeRaterSelection() {
-    this.router.navigate(['/feedback/review']);
-  }
-
-  public addExternalRater(email) {
-    this.dialog
-      .open(RaterDialogComponent, { data: { rater: { email: email } } })
-      .afterClosed()
-      .pipe(
-        filter(val => val),
-        take(1)
-      )
-      .subscribe((rater: Partial<Employee>) => {
-        this.selectedRaters = [...this.selectedRaters, rater];
-      });
   }
 }

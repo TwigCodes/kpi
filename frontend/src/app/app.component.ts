@@ -42,8 +42,8 @@ export class AppComponent implements OnInit {
     { link: 'feedback/raters', label: 'nwcdkpi.menu.feedback.raters' },
     { link: 'feedback/audit', label: 'nwcdkpi.menu.feedback.audit' },
     {
-      link: 'feedback/reviewdashboard',
-      label: 'nwcdkpi.menu.feedback.reviewdashboard'
+      link: 'feedback/review',
+      label: 'nwcdkpi.menu.feedback.review'
     },
     { link: 'examples', label: 'nwcdkpi.menu.admin' }
   ];
