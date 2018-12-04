@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Employee } from '@app/feedback/feedback.model';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'nwcdkpi-review-container',
   templateUrl: './review-container.component.html',
@@ -11,6 +13,7 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 export class ReviewContainerComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   currentEmployeeIndex = 0;
+  currentFilter = 'all';
 
   items: Array<Partial<Employee>> = [
     {
@@ -172,5 +175,55 @@ export class ReviewContainerComponent implements OnInit {
         ? 'nwcdkpi.feedback.raters.subordinate'
         : 'nwcdkpi.feedback.raters.colleague';
     return relation;
+  }
+
+  changeFilter(filter: string) {
+    this.currentFilter =
+      filter === 'supervisor'
+        ? 'supervisor'
+        : filter === 'subordinates'
+        ? 'subordinates'
+        : filter === 'colleagues'
+        ? 'colleagues'
+        : 'all';
+  }
+
+  public get filterTodo() {
+    switch (this.currentFilter) {
+      case 'supervisor':
+        return this.feedbackToOthers.filter(
+          f =>
+            f.targetUser.email ===
+            this.items[this.currentEmployeeIndex].reportTo
+        );
+      case 'subordinates':
+        return this.feedbackToOthers.filter(
+          f =>
+            f.targetUser.reportTo ===
+            this.items[this.currentEmployeeIndex].email
+        );
+      case 'colleague':
+        return this.feedbackToOthers.filter(
+          f =>
+            f.targetUser.reportTo !==
+              this.items[this.currentEmployeeIndex].email &&
+            f.targetUser.reportTo ===
+              this.items[this.currentEmployeeIndex].email
+        );
+      default:
+        return this.feedbackToOthers;
+    }
+  }
+
+  public get supervisor(): Partial<Employee>[] {
+    return this.items.filter(
+      item => item.email === this.items[this.currentEmployeeIndex].reportTo
+    );
+  }
+
+  public get subordinates(): Partial<Employee>[] {
+    return this.items.filter(
+      item => item.reportTo === this.items[this.currentEmployeeIndex].email
+    );
   }
 }

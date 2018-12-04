@@ -97,6 +97,7 @@
     "@ngrx/schematics": "^7.0.0-beta.0",
     "@types/jasmine": "~2.8.9",
     "@types/jasminewd2": "^2.0.5",
+    "@types/lodash": "^4.14.118",
     "@types/node": "^10.12.2",
     "@types/webpack-env": "~1.13.6",
     "all-contributors-cli": "^5.4.1",

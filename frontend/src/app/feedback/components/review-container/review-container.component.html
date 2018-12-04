@@ -1,10 +1,20 @@
 <div fxLayout="row" fxLayoutAlign="center start" class="full-width">
 
-  <mat-nav-list class="list-container" fxFlex="1 1 300px">
-    <h3 mat-subheader>待办</h3>
+  <mat-nav-list class="list-container" fxFlex="1 1 450px">
+    <h3 mat-subheader>{{ 'nwcdkpi.feedback.review.todo' | translate }}
+      <button mat-icon-button [matMenuTriggerFor]="filterMenu">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+      <mat-menu #filterMenu="matMenu">
+        <button mat-menu-item (click)="changeFilter('all')"> {{ 'nwcdkpi.feedback.review.filter.all' | translate }} </button>
+        <button mat-menu-item (click)="changeFilter('supervisor')"> {{ 'nwcdkpi.feedback.review.filter.supervisor' | translate }} </button>
+        <button mat-menu-item (click)="changeFilter('subordinates')"> {{ 'nwcdkpi.feedback.review.filter.subordinates' | translate }} </button>
+        <button mat-menu-item (click)="changeFilter('colleagues')"> {{ 'nwcdkpi.feedback.review.filter.colleagues' | translate }} </button>
+      </mat-menu>
+    </h3>
     <nwcdkpi-review-item
       class="item-container"
-      *ngFor="let feedback of feedbackToOthers"
+      *ngFor="let feedback of filterTodo"
       [matTooltip]="feedback.targetUser.email"
       [item]="feedback.targetUser"
       relation="{{relationToUser(feedback.targetUser) | translate}}">
@@ -12,7 +22,7 @@
   </mat-nav-list>
 
   <mat-list class="list-container" fxFlex="1 1 250px">
-    <h3 mat-subheader>已完成</h3>
+    <h3 mat-subheader> {{ 'nwcdkpi.feedback.review.completed' | translate }}</h3>
     <mat-list-item
       *ngFor="let feedback of completedFeedbacks"
       class="disabled-item">

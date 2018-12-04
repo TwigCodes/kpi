@@ -4,8 +4,8 @@
   <h4 mat-line>{{item.name}}</h4>
   <p mat-line>{{item.title}}</p>
   <span class="badge badge-secondary"> {{ relation }} </span>
-  <span [@buttonBar]="buttonBarState">
-    <button mat-button color="primary">评价</button>
-    <button mat-button color="warn">拒绝</button>
+  <span [@buttonBar]="buttonBarState" class="d-flex m-1">
+    <button mat-button color="primary"> {{ 'nwcdkpi.feedback.review.accept' | translate }} </button>
+    <button mat-button color="warn"> {{ 'nwcdkpi.feedback.review.decline' | translate }} </button>
   </span>
 </mat-list-item>
