@@ -19,6 +19,8 @@
   "nwcdkpi.feedback.documentation": "文档",
   "nwcdkpi.feedback.review.todo": "待评价同事",
   "nwcdkpi.feedback.review.completed": "已完成评价",
+  "nwcdkpi.feedback.review.declined": "拒绝评价",
+  "nwcdkpi.feedback.review.undo": "撤销",
   "nwcdkpi.feedback.review.filter.all": "全部",
   "nwcdkpi.feedback.review.filter.supervisor": "上级",
   "nwcdkpi.feedback.review.filter.subordinates": "下属",

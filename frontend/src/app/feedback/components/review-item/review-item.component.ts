@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 import {
@@ -36,6 +38,8 @@ export const buttonBarAnim = trigger('buttonBar', [
 export class ReviewItemComponent implements OnInit {
   @Input() item: Employee;
   @Input() relation: string;
+  @Output() accept = new EventEmitter();
+  @Output() decline = new EventEmitter();
   buttonBarState = 'leave';
   constructor() {}
 
@@ -43,5 +47,13 @@ export class ReviewItemComponent implements OnInit {
 
   toggleButtonBar(show: Boolean) {
     this.buttonBarState = show ? 'enter' : 'leave';
+  }
+
+  toAccept(item: Employee) {
+    this.accept.emit(item);
+  }
+
+  toDecline(item: Employee) {
+    this.decline.emit(item);
   }
 }

@@ -163,6 +163,36 @@ export class ReviewContainerComponent implements OnInit {
       questionnaireId: 1
     }
   ];
+  declinedFeedbacks = [
+    {
+      targetUser: {
+        id: 2,
+        email: 'wangwu@nwcd.com',
+        name: 'Wang Wu',
+        title: 'Project Director',
+        gender: false,
+        avatar:
+          'https://tinyfac.es/data/avatars/B3CF5288-34B0-4A5E-9877-5965522529D6-200w.jpeg',
+        employeeNo: 'A00003',
+        reportTo: 'zhaoliu@nwcd.com'
+      },
+      questionnaireId: 1
+    },
+    {
+      targetUser: {
+        id: 3,
+        email: 'zhaoliu@nwcd.com',
+        name: 'Zhao Liu',
+        title: 'Project Manager',
+        gender: true,
+        avatar:
+          'https://tinyfac.es/data/avatars/1C4EEDC2-FE9C-40B3-A2C9-A038873EE692-200w.jpeg',
+        employeeNo: 'A00004',
+        reportTo: 'zhaoliu@nwcd.com'
+      },
+      questionnaireId: 1
+    }
+  ];
   constructor() {}
 
   ngOnInit() {}
@@ -226,4 +256,20 @@ export class ReviewContainerComponent implements OnInit {
       item => item.reportTo === this.items[this.currentEmployeeIndex].email
     );
   }
+
+  undoDecline(feedback) {
+    this.declinedFeedbacks = this.declinedFeedbacks.filter(
+      f => f.targetUser.email !== feedback.targetUser.email
+    );
+    this.feedbackToOthers = [...this.feedbackToOthers, feedback];
+  }
+
+  declineFeedback(feedback) {
+    this.declinedFeedbacks = [...this.declinedFeedbacks, feedback];
+    this.feedbackToOthers = this.feedbackToOthers.filter(
+      f => f.targetUser.email !== feedback.targetUser.email
+    );
+  }
+
+  showReviewDialog() {}
 }

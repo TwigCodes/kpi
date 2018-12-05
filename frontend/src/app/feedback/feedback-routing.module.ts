@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RatersContainerComponent } from './components/raters-container/raters-container.component';
 import { ReviewContainerComponent } from './components/review-container/review-container.component';
+import { AuditContainerComponent } from './components/audit-container/audit-container.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,11 @@ const routes: Routes = [
     path: 'review',
     component: ReviewContainerComponent,
     data: { title: 'nwcdkpi.menu.feedback.review' }
+  },
+  {
+    path: 'audit',
+    component: AuditContainerComponent,
+    data: { title: 'nwcdkpi.menu.feedback.audit' }
   }
 ];
 

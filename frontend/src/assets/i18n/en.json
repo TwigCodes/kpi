@@ -20,6 +20,8 @@
   "nwcdkpi.feedback.review": "Review",
   "nwcdkpi.feedback.review.todo": "To Be Reviewed",
   "nwcdkpi.feedback.review.completed": "Completed",
+  "nwcdkpi.feedback.review.declined": "Declined",
+  "nwcdkpi.feedback.review.undo": "undo",
   "nwcdkpi.feedback.review.filter.all": "All",
   "nwcdkpi.feedback.review.filter.supervisor": "Supervisor",
   "nwcdkpi.feedback.review.filter.subordinates": "Subordinates",
