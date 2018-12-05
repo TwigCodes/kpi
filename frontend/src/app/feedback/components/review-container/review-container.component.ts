@@ -1,8 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Employee } from '@app/feedback/feedback.model';
+import { Employee, Feedback } from '@app/feedback/feedback.model';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 
 import * as _ from 'lodash';
+import { MatDialog } from '@angular/material';
+import { ReviewDialogComponent } from '../review-dialog/review-dialog.component';
+import { filter, take } from 'rxjs/operators';
 
 @Component({
   selector: 'nwcdkpi-review-container',
@@ -103,18 +106,18 @@ export class ReviewContainerComponent implements OnInit {
       reportTo: 'zhaoliu@nwcd.com'
     }
   ];
-  feedbackToOthers = [
+  feedbackToOthers: Partial<Feedback>[] = [
     {
       targetUser: {
-        id: 0,
-        email: 'zhangsan@nwcd.com',
-        name: 'Zhang San',
-        title: 'Project Manager',
+        id: 7,
+        email: 'wayne@nwcd.com',
+        name: 'Wayne Kang',
+        title: 'Deigner',
         gender: true,
         avatar:
-          'https://tinyfac.es/data/avatars/A7299C8E-CEFC-47D9-939A-3C8CA0EA4D13-200w.jpeg',
+          'https://tinyfac.es/data/avatars/AEF44435-B547-4B84-A2AE-887DFAEE6DDF-200w.jpeg',
         employeeNo: 'A00001',
-        reportTo: 'wangwu@nwcd.com'
+        reportTo: 'zhaoliu@nwcd.com'
       },
       questionnaireId: 1
     },
@@ -133,7 +136,7 @@ export class ReviewContainerComponent implements OnInit {
       questionnaireId: 1
     }
   ];
-  completedFeedbacks = [
+  completedFeedbacks: Partial<Feedback>[] = [
     {
       targetUser: {
         id: 2,
@@ -193,7 +196,7 @@ export class ReviewContainerComponent implements OnInit {
       questionnaireId: 1
     }
   ];
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {}
 
@@ -232,13 +235,13 @@ export class ReviewContainerComponent implements OnInit {
             f.targetUser.reportTo ===
             this.items[this.currentEmployeeIndex].email
         );
-      case 'colleague':
+      case 'colleagues':
         return this.feedbackToOthers.filter(
           f =>
             f.targetUser.reportTo !==
               this.items[this.currentEmployeeIndex].email &&
-            f.targetUser.reportTo ===
-              this.items[this.currentEmployeeIndex].email
+            f.targetUser.email !==
+              this.items[this.currentEmployeeIndex].reportTo
         );
       default:
         return this.feedbackToOthers;
@@ -271,5 +274,19 @@ export class ReviewContainerComponent implements OnInit {
     );
   }
 
-  showReviewDialog() {}
+  showReviewDialog(feedback: Feedback) {
+    this.dialog
+      .open(ReviewDialogComponent, { data: { ratee: feedback.targetUser } })
+      .afterClosed()
+      .pipe(
+        filter(val => val),
+        take(1)
+      )
+      .subscribe((feedback: Partial<Feedback>) => {
+        this.feedbackToOthers = this.feedbackToOthers.filter(
+          f => f.targetUser.email !== feedback.targetUser.email
+        );
+        this.completedFeedbacks = [...this.completedFeedbacks, feedback];
+      });
+  }
 }

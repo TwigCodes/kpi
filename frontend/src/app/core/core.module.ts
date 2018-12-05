@@ -4,11 +4,13 @@ import {
   SkipSelf,
   ErrorHandler,
   Injector,
-  PLATFORM_ID
+  PLATFORM_ID,
+  LOCALE_ID
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry, MatPaginatorIntl } from '@angular/material';
+import { MAT_STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StoreModule, META_REDUCERS } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -33,6 +35,8 @@ import { AppErrorHandler } from './error-handler/app-error-handler.service';
 import { CustomSerializer } from './router/custom-serializer';
 import { NotificationService } from './notifications/notification.service';
 import { loadIconResources } from './util/icon.util';
+import { MatPaginatorIntlCn } from './mat-helpers/mat-paginator-intl-cn';
+import localeZhHans from '@angular/common/locales/zh-Hans';
 
 @NgModule({
   imports: [
@@ -72,6 +76,12 @@ import { loadIconResources } from './util/icon.util';
       deps: [LocalStorageService],
       useFactory: getMetaReducers
     },
+    {
+      provide: MAT_STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true }
+    },
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCn },
+    { provide: LOCALE_ID, useValue: 'zh-Hans' },
     AuthGuardService,
     AnimationsService,
     httpInterceptorProviders,
@@ -93,6 +103,7 @@ export class CoreModule {
       throw new Error('CoreModule is already loaded. Import only in AppModule');
     }
     loadIconResources(ir, ds);
+    registerLocaleData(localeZhHans);
   }
 }
 

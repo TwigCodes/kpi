@@ -3,16 +3,15 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from '@app/shared';
 
-import { FeedbackRoutingModule } from './feedback-routing.module';
-
-import * as fromFeedback from './feedback.reducer';
-import { FeedbackEffects } from './feedback.effects';
-
 import { RatersContainerComponent } from './components/raters-container/raters-container.component';
 import { RaterDialogComponent } from './components/rater-dialog/rater-dialog.component';
 import { ReviewContainerComponent } from './components/review-container/review-container.component';
 import { ReviewItemComponent } from './components/review-item/review-item.component';
 import { AuditContainerComponent } from './components/audit-container/audit-container.component';
+import { ReviewDialogComponent } from './components/review-dialog/review-dialog.component';
+import { FeedbackRoutingModule } from './feedback-routing.module';
+import { FeedbackEffects } from './feedback.effects';
+import * as fromFeedback from './feedback.reducer';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,8 @@ import { AuditContainerComponent } from './components/audit-container/audit-cont
     RaterDialogComponent,
     ReviewContainerComponent,
     ReviewItemComponent,
-    AuditContainerComponent
+    AuditContainerComponent,
+    ReviewDialogComponent
   ],
   imports: [
     SharedModule,
@@ -28,6 +28,6 @@ import { AuditContainerComponent } from './components/audit-container/audit-cont
     StoreModule.forFeature('feedback', fromFeedback.reducer),
     EffectsModule.forFeature([FeedbackEffects])
   ],
-  entryComponents: [RaterDialogComponent]
+  entryComponents: [RaterDialogComponent, ReviewDialogComponent]
 })
 export class FeedbackModule {}

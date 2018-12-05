@@ -29,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatNativeDateModule, MatFormFieldModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -142,6 +143,7 @@ import { FilterMenuComponent } from './filter-menu/filter-menu.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatStepperModule,
     FlexLayoutModule,
 
     FontAwesomeModule
@@ -189,6 +191,7 @@ import { FilterMenuComponent } from './filter-menu/filter-menu.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatStepperModule,
     FlexLayoutModule,
 
     FontAwesomeModule,
