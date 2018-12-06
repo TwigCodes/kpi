@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import { Question, Employee } from '@app/feedback/feedback.model';
+import { Question, Employee, Feedback } from '@app/feedback/feedback.model';
 import {
   MatDialogRef,
   MAT_DIALOG_DATA,
@@ -72,12 +72,11 @@ export class ReviewDialogComponent implements OnInit {
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA)
     private data: {
-      ratee: Partial<Employee>;
+      feedback: Feedback;
     },
     private dialogRef: MatDialogRef<ReviewDialogComponent>
   ) {
-    console.log(this.data.ratee);
-    this.ratee = this.data.ratee;
+    this.ratee = this.data.feedback.targetUser;
   }
 
   ngOnInit() {
@@ -89,7 +88,13 @@ export class ReviewDialogComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.dialogRef.close(this.form.value);
+    const answers = this.form.value.items;
+
+    const feedbackResult = this.questions.map((question, index) => ({
+      question: question,
+      answer: answers[index]
+    }));
+    this.dialogRef.close(feedbackResult);
   }
 
   get formItems(): FormArray {

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Employee, Feedback } from '@app/feedback/feedback.model';
+import { Employee, Feedback, Question } from '@app/feedback/feedback.model';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 
 import * as _ from 'lodash';
@@ -276,13 +276,14 @@ export class ReviewContainerComponent implements OnInit {
 
   showReviewDialog(feedback: Feedback) {
     this.dialog
-      .open(ReviewDialogComponent, { data: { ratee: feedback.targetUser } })
+      .open(ReviewDialogComponent, { data: { feedback: feedback } })
       .afterClosed()
       .pipe(
         filter(val => val),
         take(1)
       )
-      .subscribe((feedback: Partial<Feedback>) => {
+      .subscribe((feedbackResult: { question: Question; answer: any }) => {
+        console.log('feedbackResult', feedbackResult);
         this.feedbackToOthers = this.feedbackToOthers.filter(
           f => f.targetUser.email !== feedback.targetUser.email
         );
