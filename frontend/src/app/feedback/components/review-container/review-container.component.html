@@ -1,6 +1,6 @@
-<div fxLayout="row" fxLayoutAlign="center start" class="full-width">
+<div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="center stretch"  class="full-width review-container">
 
-  <mat-nav-list class="list-container" fxFlex="1 1 450px">
+  <mat-nav-list class="list-container" fxFlex="1 1 35">
     <h3 mat-subheader>{{ 'nwcdkpi.feedback.review.todo' | translate }}
       <button mat-icon-button [matMenuTriggerFor]="filterMenu">
         <mat-icon>filter_list</mat-icon>
@@ -23,7 +23,7 @@
     </nwcdkpi-review-item>
   </mat-nav-list>
 
-  <mat-list class="list-container" fxFlex="1 1 250px">
+  <mat-list class="list-container" fxFlex="1 1 25">
     <h3 mat-subheader> {{ 'nwcdkpi.feedback.review.completed' | translate }}</h3>
     <mat-list-item
       *ngFor="let feedback of completedFeedbacks"
@@ -35,7 +35,7 @@
     </mat-list-item>
   </mat-list>
 
-  <mat-list class="list-container" fxFlex="1 1 250px">
+  <mat-list class="list-container" fxFlex="1 1 25">
     <h3 mat-subheader> {{ 'nwcdkpi.feedback.review.declined' | translate }}</h3>
     <mat-list-item *ngFor="let feedback of declinedFeedbacks" class="disabled-item">
       <img [src]="feedback.targetUser.avatar" matListIcon />

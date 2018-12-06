@@ -1,46 +1,51 @@
 <form [formGroup]="form">
   <h2 mat-dialog-title> {{ 'nwcdkpi.feedback.review.dialog.title' | translate }} </h2>
   <mat-dialog-content>
-    <mat-card>
-      <mat-card-title>{{ ratee?.name }}</mat-card-title>
-      <mat-card-subtitle>{{ ratee?.title ? ratee.title : ('nwcdkpi.feedback.rater.notitle' | translate) }}</mat-card-subtitle>
+    <mat-card class="d-flex m-1">
+      <img [src]="ratee?.avatar" class="card-avatar m-2">
+      <div>
+        <mat-card-title>{{ ratee?.name }}</mat-card-title>
+        <mat-card-subtitle>{{ ratee?.title ? ratee.title : ('nwcdkpi.feedback.rater.notitle' | translate) }}</mat-card-subtitle>
+      </div>
     </mat-card>
     <mat-horizontal-stepper formArrayName="items" linear>
       <mat-step
-        *ngFor="let item of formItems.controls; let idx = index;"
+        *ngFor="let question of questions; let idx = index;"
         label="{{idx + 1}}"
         [formGroupName]="idx"
         [stepControl]="form.get('items').get([idx])">
         <div class="col">
-          {{ questions[idx].question }}
+          {{ question.question }}
         </div>
-        <mat-form-field class="col" [ngClass]="routeAnimationsElements">
-          <textarea
-            matInput
-            placeholder="{{ 'nwcdkpi.feedback.review.dialog.answer' | translate }}"
-            formControlName="answer"
-            cdkTextareaAutosize
-            #autosize="cdkTextareaAutosize"
-            cdkAutosizeMinRows="3"
-            cdkAutosizeMaxRows="10">
-          </textarea>
-          <mat-hint [align]="'end'">{{form.get('items').get([idx]).get('answer').value?.length}} /
-            1000</mat-hint>
-          <mat-error *ngIf="form.get('items').get([idx]).get('answer').hasError('required')">
+        <ng-container [ngSwitch]="question.type">
+          <mat-form-field class="col" *ngSwitchCase="'tag'">
+            <ngx-multi-select-chips
+              [options]="question.options"
+              formControlName="answer">
+            </ngx-multi-select-chips>
+          </mat-form-field>
+          <mat-form-field class="col" *ngSwitchCase="'text'">
+            <textarea matInput placeholder="{{ 'nwcdkpi.feedback.review.dialog.answer' | translate }}" formControlName="answer"
+              cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="10">
+                    </textarea>
+            <mat-hint [align]="'end'">{{form.get('items').get([idx]).get('answer').value?.length}} /
+              1000</mat-hint>
+            <mat-error *ngIf="form.get('items').get([idx]).get('answer').hasError('required')">
 
-            {{ 'nwcdkpi.feedback.review.dialog.answer.required' | translate }}
-          </mat-error>
-          <mat-error *ngIf="form.get('items').get([idx]).get('answer').hasError('minlength')">
-            {{ 'nwcdkpi.feedback.review.dialog.answer.min' | translate }} 2
-          </mat-error>
-          <mat-error *ngIf="form.get('items').get([idx]).get('answer').hasError('maxlength')">
-            {{ 'nwcdkpi.feedback.review.dialog.answer.max' | translate }} 1000
-          </mat-error>
-        </mat-form-field>
+              {{ 'nwcdkpi.feedback.review.dialog.answer.required' | translate }}
+            </mat-error>
+            <mat-error *ngIf="form.get('items').get([idx]).get('answer').hasError('minlength')">
+              {{ 'nwcdkpi.feedback.review.dialog.answer.min' | translate }} 2
+            </mat-error>
+            <mat-error *ngIf="form.get('items').get([idx]).get('answer').hasError('maxlength')">
+              {{ 'nwcdkpi.feedback.review.dialog.answer.max' | translate }} 1000
+            </mat-error>
+          </mat-form-field>
+        </ng-container>
         <div class="d-flex justify-content-end">
-          <button mat-flat-button color="primary" matStepperPrevious type="button" *ngIf="idx > 0"> {{ 'nwcdkpi.feedback.review.dialog.answer.back' | translate }} </button>
-          <button mat-flat-button color="primary" matStepperNext type="button" *ngIf="idx < questions.length - 1">{{ 'nwcdkpi.feedback.review.dialog.answer.next' | translate }}</button>
-          <button mat-button color="primary" type="button" (click)="submit()" *ngIf="idx === questions.length - 1"> {{ 'nwcdkpi.feedback.review.dialog.answer.complete' | translate }} </button>
+          <button class="m-2" mat-flat-button color="primary" matStepperPrevious type="button" *ngIf="idx > 0"> {{ 'nwcdkpi.feedback.review.dialog.answer.back' | translate }} </button>
+          <button class="m-2" mat-flat-button color="primary" matStepperNext type="button" *ngIf="idx < questions.length - 1">{{ 'nwcdkpi.feedback.review.dialog.answer.next' | translate }}</button>
+          <button class="m-2" mat-flat-button color="primary" type="button" (click)="submit()" *ngIf="idx === questions.length - 1"> {{ 'nwcdkpi.feedback.review.dialog.answer.complete' | translate }} </button>
         </div>
       </mat-step>
     </mat-horizontal-stepper>

@@ -1,8 +1,12 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Question, Employee } from '@app/feedback/feedback.model';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatChipSelectionChange,
+  MatChipListChange
+} from '@angular/material';
 
 @Component({
   selector: 'nwcdkpi-review-dialog',
@@ -10,7 +14,6 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
   styleUrls: ['./review-dialog.component.scss']
 })
 export class ReviewDialogComponent implements OnInit {
-  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   form: FormGroup;
   ratee: Partial<Employee>;
   questions: Question[] = [

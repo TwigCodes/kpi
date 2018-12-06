@@ -107,6 +107,7 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { DetailRowDirective } from './detail-row.directive';
 import { DynaTableComponent } from './dyna-table/dyna-table.component';
 import { FilterMenuComponent } from './filter-menu/filter-menu.component';
+import { MultiSelectChipsComponent } from './multi-select-chips/multi-select-chips.component';
 
 @NgModule({
   imports: [
@@ -154,7 +155,8 @@ import { FilterMenuComponent } from './filter-menu/filter-menu.component';
     AutocompleteComponent,
     DetailRowDirective,
     DynaTableComponent,
-    FilterMenuComponent
+    FilterMenuComponent,
+    MultiSelectChipsComponent
   ],
   exports: [
     CommonModule,
@@ -200,7 +202,8 @@ import { FilterMenuComponent } from './filter-menu/filter-menu.component';
     BigInputActionComponent,
     AutocompleteComponent,
     DetailRowDirective,
-    DynaTableComponent
+    DynaTableComponent,
+    MultiSelectChipsComponent
   ]
 })
 export class SharedModule {}
