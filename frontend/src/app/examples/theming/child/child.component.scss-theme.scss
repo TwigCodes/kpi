@@ -1,9 +1,9 @@
 @import '~@angular/material/theming';
 
-@mixin nwcdkpi-child-component-theme($theme) {
+@mixin tgkpi-child-component-theme($theme) {
   $warn: map-get($theme, warn);
 
-  nwcdkpi-child {
+  tgkpi-child {
     > div {
       border-color: mat-color($warn);
 

@@ -6,7 +6,7 @@ import { namePattern, emailPattern } from '@app/core/util/regex.util';
 import { loadAvatars } from '@app/core/util/icon.util';
 
 @Component({
-  selector: 'nwcdkpi-rater-dialog',
+  selector: 'tgkpi-rater-dialog',
   templateUrl: './rater-dialog.component.html',
   styleUrls: ['./rater-dialog.component.scss']
 })

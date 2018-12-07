@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'nwcdkpi-big-input-action',
+  selector: 'ngx-big-input-action',
   templateUrl: './big-input-action.component.html',
   styleUrls: ['./big-input-action.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

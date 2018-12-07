@@ -25,36 +25,36 @@
 @import 'app/examples/examples/examples.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
-  @include nwcdkpi-styles-reset-theme($theme);
-  @include nwcdkpi-app-component-theme($theme);
-  @include nwcdkpi-about-component-theme($theme);
-  @include nwcdkpi-big-input-component-theme($theme);
-  @include nwcdkpi-notifications-component-theme($theme);
-  @include nwcdkpi-todos-container-component-theme($theme);
-  @include nwcdkpi-stock-market-container-component-theme($theme);
-  @include nwcdkpi-parent-component-theme($theme);
-  @include nwcdkpi-child-component-theme($theme);
-  @include nwcdkpi-examples-component-theme($theme);
+  @include tgkpi-styles-reset-theme($theme);
+  @include tgkpi-app-component-theme($theme);
+  @include tgkpi-about-component-theme($theme);
+  @include ngx-big-input-component-theme($theme);
+  @include tgkpi-notifications-component-theme($theme);
+  @include tgkpi-todos-container-component-theme($theme);
+  @include tgkpi-stock-market-container-component-theme($theme);
+  @include tgkpi-parent-component-theme($theme);
+  @include tgkpi-child-component-theme($theme);
+  @include tgkpi-examples-component-theme($theme);
 }
 
 .default-theme {
-  @include angular-material-theme($nwcdkpi-theme);
-  @include custom-components-theme($nwcdkpi-theme);
+  @include angular-material-theme($ngx-theme);
+  @include custom-components-theme($ngx-theme);
 }
 
 .light-theme {
-  @include angular-material-theme($nwcdkpi-light-theme);
-  @include custom-components-theme($nwcdkpi-light-theme);
+  @include angular-material-theme($ngx-light-theme);
+  @include custom-components-theme($ngx-light-theme);
 }
 
 .black-theme {
-  @include angular-material-theme($nwcdkpi-black-theme);
-  @include custom-components-theme($nwcdkpi-black-theme);
+  @include angular-material-theme($ngx-black-theme);
+  @include custom-components-theme($ngx-black-theme);
 }
 
 .nature-theme {
-  @include angular-material-theme($nwcdkpi-nature-theme);
-  @include custom-components-theme($nwcdkpi-nature-theme);
+  @include angular-material-theme($ngx-nature-theme);
+  @include custom-components-theme($ngx-nature-theme);
 }
 
 .full-width {

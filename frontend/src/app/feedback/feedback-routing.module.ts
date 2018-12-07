@@ -8,17 +8,17 @@ const routes: Routes = [
   {
     path: 'raters',
     component: RatersContainerComponent,
-    data: { title: 'nwcdkpi.menu.feedback.raters' }
+    data: { title: 'tgkpi.menu.feedback.raters' }
   },
   {
     path: 'review',
     component: ReviewContainerComponent,
-    data: { title: 'nwcdkpi.menu.feedback.review' }
+    data: { title: 'tgkpi.menu.feedback.review' }
   },
   {
     path: 'audit',
     component: AuditContainerComponent,
-    data: { title: 'nwcdkpi.menu.feedback.audit' }
+    data: { title: 'tgkpi.menu.feedback.audit' }
   }
 ];
 

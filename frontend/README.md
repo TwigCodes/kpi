@@ -1,4 +1,4 @@
-# NWCD 360-Degree Feedback System
+# tg 360-Degree Feedback System
 
 ## Run Locally
 
@@ -24,11 +24,11 @@ npm start
 ## Run Inside Docker Container
 
 ```bash
-# builds docker image with name `nwcdkpi`
-docker build -t nwcdkpi .
+# builds docker image with name `tgkpi`
+docker build -t tgkpi .
 ```
 
-The following command starts `nwcdkpi` container (you can access running application browsing <http://localhost:4200>)
+The following command starts `tgkpi` container (you can access running application browsing <http://localhost:4200>)
 
 ```bash
 docker run -it \
@@ -36,7 +36,7 @@ docker run -it \
    -v /usr/src/app/node_modules \
    -p 4200:4200 \
    --rm \
-   nwcdkpi
+   tgkpi
 ```
 
 ### Serving a Docker image

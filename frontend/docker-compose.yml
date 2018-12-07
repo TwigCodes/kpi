@@ -1,8 +1,8 @@
 version: '3'
 services:
   nginx:
-    container_name: nwcd-kpi
-    image: registry.cn-beijing.aliyuncs.com/twigcodes/nwcdkpi-frontend-nginx
+    container_name: tg-kpi
+    image: registry.cn-beijing.aliyuncs.com/twigcodes/tgkpi-frontend-nginx
     build:
       context: .
       dockerfile: ./Dockerfile

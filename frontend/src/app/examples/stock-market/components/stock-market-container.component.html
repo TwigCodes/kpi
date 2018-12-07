@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1 class="main-heading">{{ 'nwcdkpi.examples.stocks.title' | translate }}</h1>
+      <h1 class="main-heading">{{ 'tgkpi.examples.stocks.title' | translate }}</h1>
     </div>
   </div>
   <div class="row" [ngClass]="routeAnimationsElements">
@@ -9,13 +9,13 @@
       <div class="col-md-6 col-lg-3">
         <form autocomplete="false">
           <mat-form-field>
-            <input matInput [placeholder]="'nwcdkpi.examples.stocks.symbol' | translate"
+            <input matInput [placeholder]="'tgkpi.examples.stocks.symbol' | translate"
                    [value]="stocks.symbol"
                    (keyup)="onSymbolChange($event.target.value)">
           </mat-form-field>
         </form>
         <p>
-          {{ 'nwcdkpi.examples.stocks.description' | translate }} GOOGL, FB, AAPL, NVDA, AMZN,
+          {{ 'tgkpi.examples.stocks.description' | translate }} GOOGL, FB, AAPL, NVDA, AMZN,
           TWTR, SNAP, TSLA...
         </p>
         <br>
@@ -39,9 +39,9 @@
           <fa-icon icon="exclamation-triangle" size="3x"></fa-icon>
           <br><br>
           <span>
-            {{ 'nwcdkpi.examples.stocks.error1' | translate }}
+            {{ 'tgkpi.examples.stocks.error1' | translate }}
             <span class="symbol">{{stocks.symbol}}</span>
-            {{ 'nwcdkpi.examples.stocks.error2' | translate }}
+            {{ 'tgkpi.examples.stocks.error2' | translate }}
           </span>
         </p>
         <br>
@@ -50,15 +50,15 @@
     </ng-container>
     <div class="col-md-12 col-lg-4" [ngClass]="routeAnimationsElements">
       <p>
-        {{ 'nwcdkpi.examples.stocks.text1' | translate }} <code>HTTP</code>
-        {{ 'nwcdkpi.examples.stocks.text2' | translate }} <code>@ngrx/effects</code>
-        {{ 'nwcdkpi.examples.stocks.text3' | translate }}
+        {{ 'tgkpi.examples.stocks.text1' | translate }} <code>HTTP</code>
+        {{ 'tgkpi.examples.stocks.text2' | translate }} <code>@ngrx/effects</code>
+        {{ 'tgkpi.examples.stocks.text3' | translate }}
       </p>
-      <p>{{ 'nwcdkpi.examples.stocks.text4' | translate }}</p>
+      <p>{{ 'tgkpi.examples.stocks.text4' | translate }}</p>
       <p>
-        {{ 'nwcdkpi.examples.stocks.text5' | translate }} <code>.switchMap</code>.
+        {{ 'tgkpi.examples.stocks.text5' | translate }} <code>.switchMap</code>.
       </p>
-      <p>{{ 'nwcdkpi.examples.stocks.text6' | translate }}</p>
+      <p>{{ 'tgkpi.examples.stocks.text6' | translate }}</p>
     </div>
   </div>
 </div>

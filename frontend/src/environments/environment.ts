@@ -6,7 +6,7 @@
 const packageJson = require('../../package.json');
 
 export const environment = {
-  appName: 'NWCD 360-degree Feedback System',
+  appName: 'TwigCodes 360-degree Feedback System',
   envName: 'DEV',
   production: false,
   test: false,

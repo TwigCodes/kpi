@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'nwcdkpi-big-input',
+  selector: 'ngx-big-input',
   templateUrl: './big-input.component.html',
   styleUrls: ['./big-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

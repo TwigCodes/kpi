@@ -21,7 +21,7 @@ describe('FormComponent', () => {
 
   beforeEach(async () => {
     component = await createComponent<FormComponent>(
-      '<nwcdkpi-form></nwcdkpi-form>',
+      '<tgkpi-form></tgkpi-form>',
       {
         declarations: [FormComponent],
         imports: [TestingModule],
@@ -39,7 +39,7 @@ describe('FormComponent', () => {
 
   it('should submit when form is valid', async () => {
     component.input(
-      component.getByLabelText('nwcdkpi.examples.form.placeholder1'),
+      component.getByLabelText('tgkpi.examples.form.placeholder1'),
       {
         target: {
           value: '@tim_deschryver'
@@ -47,7 +47,7 @@ describe('FormComponent', () => {
       }
     );
     component.input(
-      component.getByLabelText('nwcdkpi.examples.form.placeholder2'),
+      component.getByLabelText('tgkpi.examples.form.placeholder2'),
       {
         target: {
           value: 'mysuperawesomeandsecurepassword'
@@ -55,7 +55,7 @@ describe('FormComponent', () => {
       }
     );
     component.input(
-      component.getByLabelText('nwcdkpi.examples.form.placeholder3'),
+      component.getByLabelText('tgkpi.examples.form.placeholder3'),
       {
         target: {
           value: 'foo@bar.baz'
@@ -63,7 +63,7 @@ describe('FormComponent', () => {
       }
     );
     component.input(
-      component.getByLabelText('nwcdkpi.examples.form.placeholder5'),
+      component.getByLabelText('tgkpi.examples.form.placeholder5'),
       {
         target: {
           value: '1991-12-31'
@@ -71,15 +71,15 @@ describe('FormComponent', () => {
       }
     );
     component.input(
-      component.getByLabelText('nwcdkpi.examples.form.placeholder4'),
+      component.getByLabelText('tgkpi.examples.form.placeholder4'),
       {
         target: {
           value: 'no description needed here'
         }
       }
     );
-    component.click(component.getByLabelText('nwcdkpi.examples.form.text1'));
-    component.click(component.getByText('nwcdkpi.examples.form.send'));
+    component.click(component.getByLabelText('tgkpi.examples.form.text1'));
+    component.click(component.getByText('tgkpi.examples.form.send'));
     const { type, payload } = new ActionFormUpdate({
       form: {
         autosave: false,

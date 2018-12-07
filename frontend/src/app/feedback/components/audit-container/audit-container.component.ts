@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nwcdkpi-audit-container',
+  selector: 'tgkpi-audit-container',
   templateUrl: './audit-container.component.html',
   styleUrls: ['./audit-container.component.scss']
 })

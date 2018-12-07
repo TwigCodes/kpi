@@ -1,24 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="offset-md-2 col-md-8 entry">
-      <nwcdkpi-big-input [placeholder]="'nwcdkpi.examples.todos.input' | translate" [value]="newTodo" (keyup)="onNewTodoChange($event.target.value)"
+      <ngx-big-input [placeholder]="'tgkpi.examples.todos.input' | translate" [value]="newTodo" (keyup)="onNewTodoChange($event.target.value)"
         (keyup.enter)="!isAddTodoDisabled && onAddTodo()" (keyup.escape)="onNewTodoClear()">
-        <nwcdkpi-big-input-action ariaLabel="add todo" fontSet="fas" fontIcon="fa-plus" faIcon="plus" color="accent"
-          (action)="onAddTodo()" [disabled]="isAddTodoDisabled" [matTooltip]="'nwcdkpi.examples.todos.tooltip.add' | translate"
+        <ngx-big-input-action ariaLabel="add todo" fontSet="fas" fontIcon="fa-plus" faIcon="plus" color="accent"
+          (action)="onAddTodo()" [disabled]="isAddTodoDisabled" [matTooltip]="'tgkpi.examples.todos.tooltip.add' | translate"
           matTooltipPosition="before">
-        </nwcdkpi-big-input-action>
-        <nwcdkpi-big-input-action ariaLabel="remove done items" fontSet="fas" fontIcon="fa-trash" faIcon="trash" color="warn"
+        </ngx-big-input-action>
+        <ngx-big-input-action ariaLabel="remove done items" fontSet="fas" fontIcon="fa-trash" faIcon="trash" color="warn"
           (action)="onRemoveDoneTodos()" [disabled]="removeDoneDisabled$ | async"
-          [matTooltip]="'nwcdkpi.examples.todos.tooltip.remove' | translate" matTooltipPosition="after">
-        </nwcdkpi-big-input-action>
-      </nwcdkpi-big-input>
+          [matTooltip]="'tgkpi.examples.todos.tooltip.remove' | translate" matTooltipPosition="after">
+        </ngx-big-input-action>
+      </ngx-big-input>
     </div>
   </div>
   <div class="row">
     <ng-container *ngIf="todos$ | async as todos">
       <div class="col-md-6">
         <h2>
-          {{ 'nwcdkpi.examples.todos.list' | translate }}
+          {{ 'tgkpi.examples.todos.list' | translate }}
           <button class="todos-filter" mat-icon-button [matMenuTriggerFor]="todosFilter" aria-label="open filter menu">
             <fa-icon icon="filter"></fa-icon>
           </button>
@@ -28,32 +28,32 @@
               <mat-icon>
                 <fa-icon icon="tasks"></fa-icon>
               </mat-icon>
-              <span>{{ 'nwcdkpi.examples.todos.filter.all' | translate }}</span>
+              <span>{{ 'tgkpi.examples.todos.filter.all' | translate }}</span>
             </button>
             <button mat-menu-item (click)="onFilterTodos('DONE')" [ngClass]="{ active: todos.filter === 'DONE' }"
               aria-label="show completed items">
               <mat-icon>
                 <fa-icon icon="check"></fa-icon>
               </mat-icon>
-              <span>{{ 'nwcdkpi.examples.todos.filter.done' | translate }}</span>
+              <span>{{ 'tgkpi.examples.todos.filter.done' | translate }}</span>
             </button>
             <button mat-menu-item (click)="onFilterTodos('ACTIVE')" [ngClass]="{ active: todos.filter === 'ACTIVE' }"
               aria-label="show active items">
               <mat-icon>
                 <fa-icon icon="square"></fa-icon>
               </mat-icon>
-              <span>{{ 'nwcdkpi.examples.todos.filter.active' | translate }}</span>
+              <span>{{ 'tgkpi.examples.todos.filter.active' | translate }}</span>
             </button>
           </mat-menu>
           <mat-chip-list class="todos-filter-info d-none d-sm-block d-md-none d-lg-block">
             <mat-chip [disabled]=true [ngPlural]="todos.length">
-              {{ 'nwcdkpi.examples.todos.filter.description' | translate }}
-              <ng-template ngPluralCase="other">{{ todos.length }} {{ 'nwcdkpi.examples.todos.filter.items' |
+              {{ 'tgkpi.examples.todos.filter.description' | translate }}
+              <ng-template ngPluralCase="other">{{ todos.length }} {{ 'tgkpi.examples.todos.filter.items' |
                 translate }}</ng-template>
-              <ng-template ngPluralCase="=1">{{ 'nwcdkpi.examples.todos.filter.one' | translate }} {{
-                'nwcdkpi.examples.todos.filter.item' | translate }}</ng-template>
-              <ng-template ngPluralCase="=0">{{ 'nwcdkpi.examples.todos.filter.none' | translate }} {{
-                'nwcdkpi.examples.todos.filter.items' | translate }}</ng-template>
+              <ng-template ngPluralCase="=1">{{ 'tgkpi.examples.todos.filter.one' | translate }} {{
+                'tgkpi.examples.todos.filter.item' | translate }}</ng-template>
+              <ng-template ngPluralCase="=0">{{ 'tgkpi.examples.todos.filter.none' | translate }} {{
+                'tgkpi.examples.todos.filter.items' | translate }}</ng-template>
             </mat-chip>
           </mat-chip-list>
         </h2>
@@ -68,17 +68,17 @@
       </div>
   </ng-container>
     <div class="offset-md-1 col-md-5" [ngClass]="routeAnimationsElements">
-      <h2>{{ 'nwcdkpi.examples.todos.example' | translate }}</h2>
+      <h2>{{ 'tgkpi.examples.todos.example' | translate }}</h2>
       <p>
-        {{ 'nwcdkpi.examples.todos.text1' | translate }}
-        <code>{{ 'nwcdkpi.examples.todos.text2' | translate }}</code>
-        {{ 'nwcdkpi.examples.todos.text3' | translate }}
+        {{ 'tgkpi.examples.todos.text1' | translate }}
+        <code>{{ 'tgkpi.examples.todos.text2' | translate }}</code>
+        {{ 'tgkpi.examples.todos.text3' | translate }}
       </p>
       <p>
-        {{ 'nwcdkpi.examples.todos.text4' | translate }} <code>ngrx</code>
-        {{ 'nwcdkpi.examples.todos.text5' | translate }}
+        {{ 'tgkpi.examples.todos.text4' | translate }} <code>ngrx</code>
+        {{ 'tgkpi.examples.todos.text5' | translate }}
       </p>
-      <p>{{ 'nwcdkpi.examples.todos.text6' | translate }}</p>
+      <p>{{ 'tgkpi.examples.todos.text6' | translate }}</p>
       <br>
     </div>
   </div>

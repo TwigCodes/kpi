@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "nwcdkpi": {
+    "tgkpi": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "nwcdkpi",
+      "prefix": "tgkpi",
       "schematics": {
         "@schematics/angular:component": {
           "changeDetection": "OnPush",
@@ -98,18 +98,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "nwcdkpi:build"
+            "browserTarget": "tgkpi:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "nwcdkpi:build:production"
+              "browserTarget": "tgkpi:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nwcdkpi:build"
+            "browserTarget": "tgkpi:build"
           }
         },
         "test": {
@@ -171,7 +171,7 @@
         }
       }
     },
-    "nwcdkpi-e2e": {
+    "tgkpi-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -179,7 +179,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "nwcdkpi:serve"
+            "devServerTarget": "tgkpi:serve"
           }
         },
         "lint": {
@@ -194,7 +194,7 @@
       }
     }
   },
-  "defaultProject": "nwcdkpi",
+  "defaultProject": "tgkpi",
   "cli": {
     "defaultCollection": "@ngrx/schematics"
   }

@@ -35,16 +35,17 @@ describe('BigInputActionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [HostComponent],
       imports: [SharedModule]
-    }));
+    })
+  );
 
   it('should be created', () => {
-    const template = '<nwcdkpi-big-input-action></nwcdkpi-big-input-action>';
+    const template = '<ngx-big-input-action></ngx-big-input-action>';
     fixture = createHostComponent(template);
     expect(component).toBeTruthy();
   });
 
   it('should initially not be disabled and show no icon or label', () => {
-    const template = '<nwcdkpi-big-input-action></nwcdkpi-big-input-action>';
+    const template = '<ngx-big-input-action></ngx-big-input-action>';
     fixture = createHostComponent(template);
     expect(getButton().nativeElement.disabled).toBeFalsy();
     expect(getIcon()).toBeNull();
@@ -53,13 +54,13 @@ describe('BigInputActionComponent', () => {
 
   it('should disable button if disabled property is set', () => {
     const template =
-      '<nwcdkpi-big-input-action [disabled]="true"></nwcdkpi-big-input-action>';
+      '<ngx-big-input-action [disabled]="true"></ngx-big-input-action>';
     fixture = createHostComponent(template);
     expect(getButton().nativeElement.disabled).toBeTruthy();
   });
 
   it('should display icon if fontSet and fontIcon properties are set', () => {
-    const template = `<nwcdkpi-big-input-action fontSet="fas" fontIcon="fa-trash"></nwcdkpi-big-input-action>`;
+    const template = `<ngx-big-input-action fontSet="fas" fontIcon="fa-trash"></ngx-big-input-action>`;
     fixture = createHostComponent(template);
     expect(getIcon()).toBeTruthy();
     expect(getIcon().nativeElement.classList.contains('fa-trash')).toBeTruthy();
@@ -67,14 +68,14 @@ describe('BigInputActionComponent', () => {
   });
 
   it('should display label with provided text when label property is set', () => {
-    const template = `<nwcdkpi-big-input-action label="delete"></nwcdkpi-big-input-action>`;
+    const template = `<ngx-big-input-action label="delete"></ngx-big-input-action>`;
     fixture = createHostComponent(template);
     expect(getLabel()).toBeTruthy();
     expect(getLabel().nativeElement.textContent).toBe('delete');
   });
 
   it('should emit action event on button click', () => {
-    const template = `<nwcdkpi-big-input-action (action)="actionHandler()"></nwcdkpi-big-input-action>`;
+    const template = `<ngx-big-input-action (action)="actionHandler()"></ngx-big-input-action>`;
     fixture = createHostComponent(template);
     spyOn(component, 'actionHandler').and.callThrough();
     getButton().triggerEventHandler('click', {});
