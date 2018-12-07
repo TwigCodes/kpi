@@ -1,10 +1,10 @@
 @import '~@angular/material/theming';
 
-@mixin nwcdkpi-examples-component-theme($theme) {
+@mixin tgkpi-examples-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
 
-  nwcdkpi-examples {
+  tgkpi-examples {
     .nav-responsive {
       border-bottom: 1px solid mat-color($primary);
 

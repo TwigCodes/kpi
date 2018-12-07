@@ -23,6 +23,14 @@ export const loadIconResources = (ir: MatIconRegistry, ds: DomSanitizer) => {
       'female',
       ds.bypassSecurityTrustResourceUrl(`${avatarDir}/female.svg`)
     )
+    .addSvgIcon(
+      'review',
+      ds.bypassSecurityTrustResourceUrl(`${iconDir}/review.svg`)
+    )
+    .addSvgIcon(
+      'decline',
+      ds.bypassSecurityTrustResourceUrl(`${iconDir}/decline.svg`)
+    )
     .registerFontClassAlias('fontawesome', 'fa');
 };
 

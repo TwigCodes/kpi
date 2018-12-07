@@ -1,0 +1,61 @@
+<mat-table #table [dataSource]="ds" matSort (matSortChange)="handleSortChange($event)" [matSortDisabled]="!sortable">
+  <ng-container matColumnDef="select" *ngIf="selectable">
+    <mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : undefined" [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()" (change)="handleSelectChange($event, row)" [checked]="selection.isSelected(row)">
+      </mat-checkbox>
+    </mat-cell>
+  </ng-container>
+  <!-- Generic column definition -->
+  <ng-container *ngFor="let column of columns" [matColumnDef]="column.field.name">
+    <mat-header-cell *matHeaderCellDef>
+      <!-- i've applied css rules to the icon-->
+      <ng-container *ngIf="filterable">
+        <button mat-icon-button [matMenuTriggerFor]="menu.filterMenu">
+          <mat-icon> keyboard_arrow_down </mat-icon>
+        </button>
+        <ngx-filter-menu #menu [filterField]="column.field" [operators]="column.filterOperators" (filterAdd)="handleFilterAdd($event)"
+          (filterRemove)="handleFilterRemove($event)" (filterClear)="handleFilterClear($event)"></ngx-filter-menu>
+      </ng-container>
+      <span *ngIf="sortable else nosort" mat-sort-header arrowPosition="after">{{ column.field.label }} </span>
+      <ng-template #nosort>
+        <span>{{ column.field.label }} </span>
+      </ng-template>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row" [ngClass]="styleMatrix(column)" [ngSwitch]="column.display">
+      <ng-container *ngSwitchCase="1">
+        <mat-icon *ngIf="column.cell(row) else clear" class="checked">done</mat-icon>
+        <ng-template #clear>
+          <mat-icon class="unchecked">clear</mat-icon>
+        </ng-template>
+      </ng-container>
+      <span *ngSwitchCase="2">{{ !row ? '' : column.cell(row) | date:'yyyy-MM-dd' : '+0800' }}</span>
+      <span *ngSwitchCase="4">
+        <mat-icon [svgIcon]="'json'"></mat-icon>
+      </span>
+      <span *ngSwitchCase="5">
+        <a [routerLink]="column.cell(row)">{{ column.field.label }}</a>
+      </span>
+      <ng-container *ngSwitchDefault>{{ column.cell(row) }}</ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+  <mat-row
+    *matRowDef="let row; columns: displayedColumns; let index = index;"
+    [ngClass]="{'row-highlight': isHighlight && selectedIndex === index}"
+    (mouseenter)="toggleHighlight(true, index)"
+    (mouseleave)="toggleHighlight(false, index)"
+    [cdkDetailRow]="row"
+    [cdkDetailRowTpl]="tpl"
+    (click)="emitClick(row)"
+    [@rowsAnimation]="">
+  </mat-row>
+</mat-table>
+<mat-paginator #paginator (page)="emitPage($event)" [showFirstLastButtons]="true" [pageIndex]="pageIndex" [length]="total"
+  [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+</mat-paginator>

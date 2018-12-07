@@ -1,18 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RatersContainerComponent } from './components/raters-container/raters-container.component';
-import { ReviewDashboardComponent } from './components/review-dashboard/review-dashboard.component';
+import { ReviewContainerComponent } from './components/review-container/review-container.component';
+import { AuditContainerComponent } from './components/audit-container/audit-container.component';
 
 const routes: Routes = [
   {
     path: 'raters',
     component: RatersContainerComponent,
-    data: { title: 'nwcdkpi.menu.feedback.raters' }
+    data: { title: 'tgkpi.menu.feedback.raters' }
   },
   {
-    path: 'reviewdashboard',
-    component: ReviewDashboardComponent,
-    data: { title: 'nwcdkpi.feedback.dashboard' }
+    path: 'review',
+    component: ReviewContainerComponent,
+    data: { title: 'tgkpi.menu.feedback.review' }
+  },
+  {
+    path: 'audit',
+    component: AuditContainerComponent,
+    data: { title: 'tgkpi.menu.feedback.audit' }
   }
 ];
 

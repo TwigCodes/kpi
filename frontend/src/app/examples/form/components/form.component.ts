@@ -13,7 +13,7 @@ import { selectFormState } from '../form.selectors';
 import { Form } from '../form.model';
 
 @Component({
-  selector: 'nwcdkpi-form',
+  selector: 'tgkpi-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -74,10 +74,10 @@ export class FormComponent implements OnInit {
       this.save();
       this.notificationService.info(
         (this.form.value.requestGift
-          ? this.translate.instant('nwcdkpi.examples.form.text4')
-          : this.translate.instant('nwcdkpi.examples.form.text5')) +
+          ? this.translate.instant('tgkpi.examples.form.text4')
+          : this.translate.instant('tgkpi.examples.form.text5')) +
           ' : ' +
-          this.translate.instant('nwcdkpi.examples.form.text6')
+          this.translate.instant('tgkpi.examples.form.text6')
       );
     }
   }

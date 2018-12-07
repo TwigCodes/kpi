@@ -13,7 +13,7 @@ import { ActionBooksUpsertOne, ActionBooksDeleteOne } from '../books.actions';
 import { selectSelectedBook, selectAllBooks } from '../books.selectors';
 
 @Component({
-  selector: 'nwcdkpi-crud',
+  selector: 'tgkpi-crud',
   templateUrl: './crud.component.html',
   styleUrls: ['./crud.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

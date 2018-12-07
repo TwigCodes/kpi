@@ -1,9 +1,9 @@
 @import '~@angular/material/theming';
 
-@mixin nwcdkpi-stock-market-container-component-theme($theme) {
+@mixin tgkpi-stock-market-container-component-theme($theme) {
   $warn: map-get($theme, warn);
 
-  nwcdkpi-stock-market {
+  tgkpi-stock-market {
     mat-card {
       .negative {
         color: mat-color($warn);

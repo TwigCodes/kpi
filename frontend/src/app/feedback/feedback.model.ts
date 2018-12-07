@@ -1,12 +1,17 @@
 import { AppState } from '@app/core';
 
 export interface Result {
-  questionnaireID: number;
+  questionnaireId: number;
   questionId: number;
   projectId: number;
   result: string;
   reviewerId: number;
   revieweeId: number;
+}
+
+export interface Feedback {
+  targetUser: Employee;
+  questionnaireId: number;
 }
 
 export interface Questionnaire {
@@ -17,8 +22,9 @@ export interface Questionnaire {
 
 export interface Question {
   id: number;
-  questionnaireID: number;
+  questionnaireId: number;
   question: string;
+  options?: { label: string; value: string }[];
   type: string;
   displayOrder: number;
 }

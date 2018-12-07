@@ -5,13 +5,15 @@ import { SharedModule } from '@app/shared';
 @Component({
   selector: 'host-for-test',
   template: `
-  <nwcdkpi-big-input placeholder="I am going to do..."
-  [value]="newValue"
-  (keyup)="onKeyEvent($event)"
-  (keyup.enter)="onKeyEvent($event)"
-  (keyup.escape)="onKeyEvent($event)">
-</nwcdkpi-big-input>
-`
+    <ngx-big-input
+      placeholder="I am going to do..."
+      [value]="newValue"
+      (keyup)="onKeyEvent($event)"
+      (keyup.enter)="onKeyEvent($event)"
+      (keyup.escape)="onKeyEvent($event)"
+    >
+    </ngx-big-input>
+  `
 })
 class HostComponent {
   newValue: string;

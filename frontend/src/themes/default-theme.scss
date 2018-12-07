@@ -1,9 +1,5 @@
-$nwcdkpi-primary: mat-palette($mat-indigo, 800, 300, 900);
-$nwcdkpi-accent: mat-palette($mat-light-blue);
-$nwcdkpi-warn: mat-palette($mat-pink, 600);
+$ngx-primary: mat-palette($mat-indigo, 800, 300, 900);
+$ngx-accent: mat-palette($mat-light-blue);
+$ngx-warn: mat-palette($mat-pink, 600);
 
-$nwcdkpi-theme: mat-light-theme(
-  $nwcdkpi-primary,
-  $nwcdkpi-accent,
-  $nwcdkpi-warn
-);
+$ngx-theme: mat-light-theme($ngx-primary, $ngx-accent, $ngx-warn);

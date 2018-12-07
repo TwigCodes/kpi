@@ -8,12 +8,12 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent,
-    data: { title: 'nwcdkpi.menu.about' }
+    data: { title: 'tgkpi.menu.about' }
   },
   {
     path: 'features',
     component: FeaturesComponent,
-    data: { title: 'nwcdkpi.menu.feedback' }
+    data: { title: 'tgkpi.menu.feedback' }
   }
 ];
 

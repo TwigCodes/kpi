@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@app/core';
 
 @Component({
-  selector: 'nwcdkpi-authenticated',
+  selector: 'tgkpi-authenticated',
   templateUrl: './authenticated.component.html',
   styleUrls: ['./authenticated.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

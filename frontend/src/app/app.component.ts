@@ -22,7 +22,7 @@ import {
 } from './settings';
 
 @Component({
-  selector: 'nwcdkpi-root',
+  selector: 'tgkpi-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   animations: [routeAnimations]
@@ -38,18 +38,18 @@ export class AppComponent implements OnInit {
     { label: 'English', value: 'en' }
   ];
   navigation = [
-    { link: 'about', label: 'nwcdkpi.menu.about' },
-    { link: 'feedback/raters', label: 'nwcdkpi.menu.feedback.raters' },
-    { link: 'feedback/audit', label: 'nwcdkpi.menu.feedback.audit' },
+    { link: 'about', label: 'tgkpi.menu.about' },
+    { link: 'feedback/raters', label: 'tgkpi.menu.feedback.raters' },
+    { link: 'feedback/audit', label: 'tgkpi.menu.feedback.audit' },
     {
-      link: 'feedback/reviewdashboard',
-      label: 'nwcdkpi.menu.feedback.reviewdashboard'
+      link: 'feedback/review',
+      label: 'tgkpi.menu.feedback.review'
     },
-    { link: 'examples', label: 'nwcdkpi.menu.admin' }
+    { link: 'examples', label: 'tgkpi.menu.admin' }
   ];
   navigationSideMenu = [
     ...this.navigation,
-    { link: 'settings', label: 'nwcdkpi.menu.settings' }
+    { link: 'settings', label: 'tgkpi.menu.settings' }
   ];
 
   isAuthenticated$: Observable<boolean>;

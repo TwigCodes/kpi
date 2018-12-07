@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS, NotificationService } from '@app/core';
 
 @Component({
-  selector: 'nwcdkpi-notifications',
+  selector: 'tgkpi-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

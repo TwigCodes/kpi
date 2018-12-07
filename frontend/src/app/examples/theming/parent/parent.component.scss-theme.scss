@@ -1,9 +1,9 @@
 @import '~@angular/material/theming';
 
-@mixin nwcdkpi-parent-component-theme($theme) {
+@mixin tgkpi-parent-component-theme($theme) {
   $accent: map-get($theme, accent);
 
-  nwcdkpi-parent {
+  tgkpi-parent {
     > .container {
       > .row {
         > .col-md-6 {
