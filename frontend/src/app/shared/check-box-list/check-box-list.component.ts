@@ -128,13 +128,12 @@ export class CheckBoxListComponent
 
   ngAfterContentInit() {
     this.checkboxes.forEach((checkbox, index) => {
-      this.subscriptions.push(
-        checkbox.change.subscribe((ev: MatCheckboxChange) => {
-          this.saveSelectedStateFromChildren(ev, index);
-          this.propagateChange(this.selectedOptions);
-          console.log(this.selectedOptions);
-        })
-      );
+      const sub = checkbox.change.subscribe((ev: MatCheckboxChange) => {
+        this.saveSelectedStateFromChildren(ev, index);
+        this.propagateChange(this.selectedOptions);
+        console.log(this.selectedOptions);
+      });
+      this.subscriptions.push(sub);
     });
   }
 
