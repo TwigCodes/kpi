@@ -17,11 +17,7 @@ import { MatFormFieldControl, MatChipList } from '@angular/material';
 import { Subject } from 'rxjs';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-
-export interface Option {
-  label: string;
-  value: string;
-}
+import { Option } from '../selection.model';
 
 @Component({
   selector: 'ngx-multi-select-chips',
@@ -33,14 +29,14 @@ export interface Option {
 })
 export class MultiSelectChipsComponent
   implements MatFormFieldControl<Option[]>, ControlValueAccessor {
-  @Input() options: Option[];
+  @Input() options: Option[] = [];
   selectedOptions: Option[] = [];
   form: FormGroup;
   @ViewChild('chipList') chipList: MatChipList;
-  private propagateChange = (_: any) => {};
   // required properties from ControlValueAccessor
+  private propagateChange = (_: any) => {};
   writeValue(obj: any): void {
-    this.selectedOptions = obj || [];
+    this.value = obj;
   }
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
