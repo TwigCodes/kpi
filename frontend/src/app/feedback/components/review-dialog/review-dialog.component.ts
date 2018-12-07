@@ -64,7 +64,7 @@ export class ReviewDialogComponent implements OnInit {
         { label: '自我导向', value: '-1' },
         { label: '独断专行', value: '-1' }
       ],
-      type: 'tag',
+      type: 'checkbox',
       displayOrder: 5
     }
   ];

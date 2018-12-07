@@ -18,6 +18,19 @@
           {{ question.question }}
         </div>
         <ng-container [ngSwitch]="question.type">
+          <mat-form-field class="col" *ngSwitchCase="'checkbox'">
+            <ngx-check-box-list [options]="question.options" formControlName="answer">
+              <mat-checkbox *ngFor="let option of question.options" [value]="option.value"> {{ option.label }}
+              </mat-checkbox>
+            </ngx-check-box-list>
+          </mat-form-field>
+          <mat-form-field class="col" *ngSwitchCase="'radio'">
+            <mat-radio-group formControlName="answer">
+              <mat-radio-button
+                *ngFor="let option of question.options"
+                [value]="option.value"> {{ option.label }} </mat-radio-button>
+            </mat-radio-group>
+          </mat-form-field>
           <mat-form-field class="col" *ngSwitchCase="'tag'">
             <ngx-multi-select-chips
               [options]="question.options"
@@ -25,9 +38,15 @@
             </ngx-multi-select-chips>
           </mat-form-field>
           <mat-form-field class="col" *ngSwitchCase="'text'">
-            <textarea matInput placeholder="{{ 'nwcdkpi.feedback.review.dialog.answer' | translate }}" formControlName="answer"
-              cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="3" cdkAutosizeMaxRows="10">
-                    </textarea>
+            <textarea
+              matInput
+              placeholder="{{ 'nwcdkpi.feedback.review.dialog.answer' | translate }}"
+              formControlName="answer"
+              cdkTextareaAutosize
+              cdkAutosizeMinRows="3"
+              cdkAutosizeMaxRows="10"
+              #autosize="cdkTextareaAutosize" >
+            </textarea>
             <mat-hint [align]="'end'">{{form.get('items').get([idx]).get('answer').value?.length}} /
               1000</mat-hint>
             <mat-error *ngIf="form.get('items').get([idx]).get('answer').hasError('required')">
