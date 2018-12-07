@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule, MatFormFieldModule } from '@angular/material';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -108,6 +109,7 @@ import { DetailRowDirective } from './detail-row.directive';
 import { DynaTableComponent } from './dyna-table/dyna-table.component';
 import { FilterMenuComponent } from './filter-menu/filter-menu.component';
 import { MultiSelectChipsComponent } from './multi-select-chips/multi-select-chips.component';
+import { CheckBoxListComponent } from './check-box-list/check-box-list.component';
 
 @NgModule({
   imports: [
@@ -145,6 +147,7 @@ import { MultiSelectChipsComponent } from './multi-select-chips/multi-select-chi
     MatPaginatorModule,
     MatSortModule,
     MatStepperModule,
+    MatRadioModule,
     FlexLayoutModule,
 
     FontAwesomeModule
@@ -156,7 +159,8 @@ import { MultiSelectChipsComponent } from './multi-select-chips/multi-select-chi
     DetailRowDirective,
     DynaTableComponent,
     FilterMenuComponent,
-    MultiSelectChipsComponent
+    MultiSelectChipsComponent,
+    CheckBoxListComponent
   ],
   exports: [
     CommonModule,
@@ -194,6 +198,7 @@ import { MultiSelectChipsComponent } from './multi-select-chips/multi-select-chi
     MatPaginatorModule,
     MatSortModule,
     MatStepperModule,
+    MatRadioModule,
     FlexLayoutModule,
 
     FontAwesomeModule,
@@ -203,7 +208,8 @@ import { MultiSelectChipsComponent } from './multi-select-chips/multi-select-chi
     AutocompleteComponent,
     DetailRowDirective,
     DynaTableComponent,
-    MultiSelectChipsComponent
+    MultiSelectChipsComponent,
+    CheckBoxListComponent
   ]
 })
 export class SharedModule {}
