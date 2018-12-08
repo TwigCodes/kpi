@@ -91,5 +91,11 @@
   "tgkpi.settings.themes.title": "Themes",
   "tgkpi.settings.title": "Settings",
   "tgkpi.title.long": "360-Degree Feedback System",
-  "tgkpi.title.short": "Angular Starter"
+  "tgkpi.title.short": "Angular Starter",
+  "material.paginator.itemsperpage": "Items per page",
+  "material.paginator.next": "Next",
+  "material.paginator.prev": "Previous",
+  "material.paginator.first": "First",
+  "material.paginator.last": "Last",
+  "material.paginator.of": "of"
 }

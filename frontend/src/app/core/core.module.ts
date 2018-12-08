@@ -9,7 +9,11 @@ import {
 } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { MatIconRegistry, MatPaginatorIntl } from '@angular/material';
+import {
+  MatIconRegistry,
+  MatPaginatorIntl,
+  MAT_DATE_LOCALE
+} from '@angular/material';
 import { MAT_STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { DomSanitizer } from '@angular/platform-browser';
 import { StoreModule, META_REDUCERS } from '@ngrx/store';
@@ -35,7 +39,7 @@ import { AppErrorHandler } from './error-handler/app-error-handler.service';
 import { CustomSerializer } from './router/custom-serializer';
 import { NotificationService } from './notifications/notification.service';
 import { loadIconResources } from './util/icon.util';
-import { MatPaginatorIntlCn } from './mat-helpers/mat-paginator-intl-cn';
+import { CustomMatPaginatorIntl } from './mat-helpers/mat-paginator-intl-cn';
 import localeZhHans from '@angular/common/locales/zh-Hans';
 
 @NgModule({
@@ -51,7 +55,7 @@ import localeZhHans from '@angular/common/locales/zh-Hans';
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
-          name: 'Angular NgRx Material Starter'
+          name: environment.appName
         }),
 
     // 3rd party
@@ -80,7 +84,6 @@ import localeZhHans from '@angular/common/locales/zh-Hans';
       provide: MAT_STEPPER_GLOBAL_OPTIONS,
       useValue: { showError: true }
     },
-    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCn },
     { provide: LOCALE_ID, useValue: 'zh-Hans' },
     AuthGuardService,
     AnimationsService,

@@ -6,12 +6,10 @@ import {
   EventEmitter,
   ChangeDetectionStrategy,
   ViewChild,
-  AfterViewInit,
-  OnChanges,
-  SimpleChanges
+  OnDestroy,
+  OnInit
 } from '@angular/core';
 import {
-  MatCell,
   MatSort,
   MatPaginator,
   MatTableDataSource,
@@ -36,6 +34,11 @@ import {
   QueryStringBuilder,
   FilterField
 } from '../filter.util';
+import { Observable, Subscription } from 'rxjs';
+
+export interface Identifiable {
+  id: string;
+}
 
 const detailExpandAnim = trigger('detailExpand', [
   state('void', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
@@ -123,40 +126,49 @@ export interface ColumnDef {
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [tableItemAnim, rowsAnimation]
 })
-export class DynaTableComponent implements AfterViewInit, OnChanges {
+export class DynaTableComponent implements OnInit, OnDestroy {
   @Output() pageChange = new EventEmitter<PageEvent>();
   @Output() itemClicked = new EventEmitter<any>();
   @Output() sortChange = new EventEmitter<Sort>();
   @Output() selectChange = new EventEmitter<any[]>();
+  @Output() filterChange = new EventEmitter<string>();
   @Input() tpl: TemplateRef<any>;
   @Input() columns: ColumnDef[] = [];
   @Input() pageSize = 20;
   @Input() total = 0;
   @Input() pageIndex = 0;
   @Input() pageSizeOptions = [5, 10, 20, 100];
-  @Input() ds: MatTableDataSource<any[]>;
   @Input() selectable = false;
   @Input() sortable = true;
   @Input() filterable = true;
-  @Output() filterChange = new EventEmitter<string>();
+  @Input() headerSticky = true;
+  @Input() columnStickyStart = -1;
+  @Input() columnStickyEnd = -1;
+  @Input() data$: Observable<Identifiable[]>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  selection = new SelectionModel<any>(true, []);
+  selection = new SelectionModel<Identifiable>(true, []);
   queryParts: QueryPart[] = [];
-
+  ds: MatTableDataSource<Identifiable> = new MatTableDataSource();
   displayedColumns: string[];
   isHighlight = false;
   selectedIndex = -1;
-  ngAfterViewInit(): void {
+  subscription: Subscription = Subscription.EMPTY;
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.subscription = this.data$.subscribe(data => (this.ds.data = data));
     this.displayedColumns = this.selectable
       ? [...['select'], ...this.columns.map(c => c.field.name)]
       : this.columns.map(c => c.field.name);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['ds']) {
-      this.selection.clear();
+  ngOnDestroy(): void {
+    if (!this.subscription.closed) {
+      this.subscription.unsubscribe();
     }
+    this.subscription = Subscription.EMPTY;
   }
 
   styleMatrix(column: ColumnDef) {

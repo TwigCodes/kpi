@@ -90,5 +90,11 @@
   "tgkpi.settings.themes.title": "主题",
   "tgkpi.settings.title": "设置",
   "tgkpi.title.long": "360度评估系统",
-  "tgkpi.title.short": "360度评估"
+  "tgkpi.title.short": "360度评估",
+  "material.paginator.itemsperpage": "每页",
+  "material.paginator.next": "下一页",
+  "material.paginator.prev": "上一页",
+  "material.paginator.first": "首页",
+  "material.paginator.last": "尾页",
+  "material.paginator.of": "条中的"
 }
