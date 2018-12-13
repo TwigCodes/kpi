@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { AuditVM } from '@app/feedback';
-import {
-  ColumnDef,
-  DisplayType,
-  AlignType
-} from '@app/shared/dyna-table/dyna-table.component';
 import { PageEvent } from '@angular/material';
+import { ColumnConfig } from '@app/dyna-table';
 
 @Component({
   selector: 'tgkpi-audit-container',
@@ -39,36 +35,71 @@ export class AuditContainerComponent implements OnInit {
       }
     }
   ]);
-  columns: ColumnDef[] = [
+  column: ColumnConfig = {
+    name: 'id',
+    displayName: 'ID,',
+    cell: (e: AuditVM) => `${e.id}`,
+    type: 'text'
+  };
+  row: {
+    id: 1;
+    reviewInvitation: {
+      id: 1;
+      reviewee: {
+        id: 1;
+        name: 'Zhang San';
+        email: 'zhangsan@local.dev';
+      };
+      reviewers: [
+        {
+          id: 3;
+          name: 'Wang Wu';
+          email: 'wangwu@local.dev';
+        },
+        {
+          id: 4;
+          name: 'Zhao Liu';
+          email: 'zhaoliu@local.dev';
+        }
+      ];
+    };
+  };
+  columns: ColumnConfig[] = [
     {
-      field: { name: 'id', label: 'ID' },
+      name: 'id',
+      displayName: 'ID',
       cell: (e: AuditVM) => `${e.id}`,
-      display: DisplayType.TEXT,
-      align: AlignType.LEFT
+      type: 'string'
     },
     {
-      field: { name: 'reviewee.name', label: '员工姓名' },
+      name: 'reviewee.name',
+      displayName: '员工姓名',
       cell: (e: AuditVM) => e.reviewInvitation.reviewee.name,
-      display: DisplayType.TEXT,
-      align: AlignType.LEFT
+      type: 'string'
     },
     {
-      field: { name: 'reviewee.email', label: '员工 Email' },
+      name: 'reviewee.email',
+      displayName: '员工 Email',
       cell: (e: AuditVM) => `${e.reviewInvitation.reviewee.email}`,
-      display: DisplayType.TEXT,
-      align: AlignType.LEFT
+      type: 'string'
     },
     {
-      field: { name: 'reviewers', label: '评价者' },
+      name: 'reviewers',
+      displayName: '评价者',
       cell: (e: AuditVM) => `${e.reviewInvitation.reviewers}`,
-      display: DisplayType.TEXT,
-      align: AlignType.LEFT
+      type: 'string'
     },
     {
-      field: { name: 'auditBy', label: '修订人' },
-      cell: (e: AuditVM) => (e.auditedBy ? '未审核' : '已审核'),
-      display: DisplayType.TEXT,
-      align: AlignType.LEFT
+      name: 'auditBy',
+      displayName: '审核人',
+      cell: (e: AuditVM) => (e.auditedBy ? '已审核' : '未审核'),
+      type: 'string'
+    },
+    {
+      name: 'auditAt',
+      displayName: '审核时间',
+      cell: (e: AuditVM) => e.auditedAt,
+      type: 'date'
     }
   ];
   page$: Observable<number> = of(0);

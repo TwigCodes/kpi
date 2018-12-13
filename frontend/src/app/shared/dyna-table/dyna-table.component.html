@@ -12,82 +12,22 @@
   </ng-container>
   <!-- Generic column definition -->
   <ng-container *ngFor="let column of columns;let idx = index;">
-    <ng-container [matColumnDef]="column.field.name" *ngIf="idx === columnStickyStart" sticky>
+    <ng-container
+      [matColumnDef]="column.field.name"
+      [sticky]="column.sticky === 'start'"
+      [stickyEnd]="column.sticky === 'end'">
       <th mat-header-cell *matHeaderCellDef>
         <ng-container *ngIf="filterable">
           <button mat-icon-button [matMenuTriggerFor]="menu.filterMenu">
             <mat-icon> keyboard_arrow_down </mat-icon>
           </button>
-          <ngx-filter-menu #menu [filterField]="column.field" [operators]="column.filterOperators" (filterAdd)="handleFilterAdd($event)"
-            (filterRemove)="handleFilterRemove($event)" (filterClear)="handleFilterClear($event)">
-          </ngx-filter-menu>
-        </ng-container>
-        <span *ngIf="sortable else nosort" mat-sort-header arrowPosition="after">
-          {{ column.field.label }}
-        </span>
-        <ng-template #nosort>
-          <span>{{ column.field.label }} </span>
-        </ng-template>
-      </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="styleMatrix(column)" [ngSwitch]="column.display">
-        <ng-container *ngSwitchCase="1">
-          <mat-icon *ngIf="column.cell(row) else clear" class="checked">done</mat-icon>
-          <ng-template #clear>
-            <mat-icon class="unchecked">clear</mat-icon>
-          </ng-template>
-        </ng-container>
-        <span *ngSwitchCase="2">{{ !row ? '' : column.cell(row) | date:'yyyy-MM-dd' : '+0800' }}</span>
-        <span *ngSwitchCase="4">
-          <mat-icon [svgIcon]="'json'"></mat-icon>
-        </span>
-        <span *ngSwitchCase="5">
-          <a [routerLink]="column.cell(row)">{{ column.field.label }}</a>
-        </span>
-        <ng-container *ngSwitchDefault>{{ column.cell(row) }}</ng-container>
-      </td>
-    </ng-container>
-    <ng-container [matColumnDef]="column.field.name" *ngIf="idx === columnStickyEnd" stickyEnd>
-      <th mat-header-cell *matHeaderCellDef>
-        <ng-container *ngIf="filterable">
-          <button mat-icon-button [matMenuTriggerFor]="menu.filterMenu">
-            <mat-icon> keyboard_arrow_down </mat-icon>
-          </button>
-          <ngx-filter-menu #menu [filterField]="column.field" [operators]="column.filterOperators" (filterAdd)="handleFilterAdd($event)"
-            (filterRemove)="handleFilterRemove($event)" (filterClear)="handleFilterClear($event)">
-          </ngx-filter-menu>
-        </ng-container>
-        <span *ngIf="sortable else nosort" mat-sort-header arrowPosition="after">
-          {{ column.field.label }}
-        </span>
-        <ng-template #nosort>
-          <span>{{ column.field.label }} </span>
-        </ng-template>
-      </th>
-      <td mat-cell *matCellDef="let row" [ngClass]="styleMatrix(column)" [ngSwitch]="column.display">
-        <ng-container *ngSwitchCase="1">
-          <mat-icon *ngIf="column.cell(row) else clear" class="checked">done</mat-icon>
-          <ng-template #clear>
-            <mat-icon class="unchecked">clear</mat-icon>
-          </ng-template>
-        </ng-container>
-        <span *ngSwitchCase="2">{{ !row ? '' : column.cell(row) | date:'yyyy-MM-dd' : '+0800' }}</span>
-        <span *ngSwitchCase="4">
-          <mat-icon [svgIcon]="'json'"></mat-icon>
-        </span>
-        <span *ngSwitchCase="5">
-          <a [routerLink]="column.cell(row)">{{ column.field.label }}</a>
-        </span>
-        <ng-container *ngSwitchDefault>{{ column.cell(row) }}</ng-container>
-      </td>
-    </ng-container>
-    <ng-container [matColumnDef]="column.field.name" *ngIf="idx !== columnStickyStart && idx !== columnStickyEnd">
-      <th mat-header-cell *matHeaderCellDef>
-        <ng-container *ngIf="filterable">
-          <button mat-icon-button [matMenuTriggerFor]="menu.filterMenu">
-            <mat-icon> keyboard_arrow_down </mat-icon>
-          </button>
-          <ngx-filter-menu #menu [filterField]="column.field" [operators]="column.filterOperators" (filterAdd)="handleFilterAdd($event)"
-            (filterRemove)="handleFilterRemove($event)" (filterClear)="handleFilterClear($event)">
+          <ngx-filter-menu
+            #menu
+            [filterField]="column.field"
+            [operators]="column.filterOperators"
+            (filterAdd)="handleFilterAdd($event)"
+            (filterRemove)="handleFilterRemove($event)"
+            (filterClear)="handleFilterClear($event)">
           </ngx-filter-menu>
         </ng-container>
         <span *ngIf="sortable else nosort" mat-sort-header arrowPosition="after">

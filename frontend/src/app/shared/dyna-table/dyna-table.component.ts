@@ -117,6 +117,7 @@ export interface ColumnDef {
   display: DisplayType;
   align: AlignType;
   filterOperators?: Operator[];
+  sticky?: string;
 }
 
 @Component({
@@ -142,8 +143,6 @@ export class DynaTableComponent implements OnInit, OnDestroy {
   @Input() sortable = true;
   @Input() filterable = true;
   @Input() headerSticky = true;
-  @Input() columnStickyStart = -1;
-  @Input() columnStickyEnd = -1;
   @Input() data$: Observable<Identifiable[]>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

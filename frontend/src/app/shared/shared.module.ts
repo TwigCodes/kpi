@@ -106,10 +106,10 @@ import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { DetailRowDirective } from './detail-row.directive';
-import { DynaTableComponent } from './dyna-table/dyna-table.component';
 import { FilterMenuComponent } from './filter-menu/filter-menu.component';
 import { MultiSelectChipsComponent } from './multi-select-chips/multi-select-chips.component';
 import { CheckBoxListComponent } from './check-box-list/check-box-list.component';
+import { DynaTableModule } from '@app/dyna-table';
 
 @NgModule({
   imports: [
@@ -157,7 +157,6 @@ import { CheckBoxListComponent } from './check-box-list/check-box-list.component
     BigInputActionComponent,
     AutocompleteComponent,
     DetailRowDirective,
-    DynaTableComponent,
     FilterMenuComponent,
     MultiSelectChipsComponent,
     CheckBoxListComponent
@@ -200,6 +199,7 @@ import { CheckBoxListComponent } from './check-box-list/check-box-list.component
     MatStepperModule,
     MatRadioModule,
     FlexLayoutModule,
+    DynaTableModule,
 
     FontAwesomeModule,
 
@@ -207,7 +207,6 @@ import { CheckBoxListComponent } from './check-box-list/check-box-list.component
     BigInputActionComponent,
     AutocompleteComponent,
     DetailRowDirective,
-    DynaTableComponent,
     MultiSelectChipsComponent,
     CheckBoxListComponent
   ]
